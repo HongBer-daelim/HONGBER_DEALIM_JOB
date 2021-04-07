@@ -1,0 +1,179 @@
+@charset "UTF-8";
+
+body {
+    margin: 0 auto;
+    font-family: '나눔 고딕', NanumGothic, '돋움', Dotum, sans-serif;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+.blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    background-color: #aaa;
+    z-index: 1;
+}
+
+.logo {
+    display: inline-block;
+    width: 200px;
+    height: 100%;
+    background: #eee;
+}
+
+.nav_wrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 77%;
+    height: 100%;
+    text-align: center;
+}
+
+nav {
+    display: inline-block;
+    width: 18%;
+    line-height: 50px;
+    text-align: center;
+}
+
+.profile {
+  width: 50%;
+  padding-top: 50px;
+  margin: 0 auto;
+}
+
+.profile_img {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 50px auto;
+}
+
+.profile_img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.camera_icon {
+  position: absolute;
+  right: -40px;
+  bottom: 0;
+  width: 35px;
+  height: 35px;
+  background: url(/css/image/camera.png) 0 0 no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.profile_info {
+  width: 700px;
+  height: 150px;
+  margin: 0 auto 50px;
+}
+
+.profile_info input {
+  width: 100%;
+  line-height: 25px;
+  resize: none;
+  box-sizing: border-box;
+  margin-bottom: 25px;
+}
+
+.profile_info input:last-child {
+  margin-bottom: 0;
+}
+
+.history {
+  /* position: relative; */
+  /* display: inline-block; */
+  width: 100%;
+}
+
+/* .history_btn {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.history_btn:hover {
+  background: pink;
+}
+
+.dropdown_content {
+  display: none;
+  position: absolute;
+  top: 80px;
+  right: 50px;
+  width: 100px;
+  height: 30px;
+}
+
+.history_hidden_btn1 {
+  display: block;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.history_hidden_btn2 {
+  display: block;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.show {
+  display: block;
+} */
+
+.history>div {
+  width: 50%;
+  height: 250px;
+  padding: 50px 0;
+  margin: 0 auto 50px;
+  overflow: auto;
+}
+
+.ing {
+  background: #ddd;
+}
+
+.finish {
+  background: #eee;
+}
+
+.status {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 80%;
+  margin: 0 auto;
+}
+
+td {
+  height: 50px;
+  border: 1px solid black;
+  vertical-align: middle;
+  text-align: center;
+}

@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+body {
+    margin: 0 auto;
+    font-family: '나눔 고딕', NanumGothic, '돋움', Dotum, sans-serif;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    background-color: #aaa;
+    z-index: 1;
+}
+
+.logo {
+    display: inline-block;
+    width: 200px;
+    height: 100%;
+    background: #eee;
+}
+
+.nav_wrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 77%;
+    height: 100%;
+    text-align: center;
+}
+
+nav {
+    display: inline-block;
+    width: 16%;
+    line-height: 50px;
+    text-align: center;
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+    height: 450px !important;
+    padding-top: 50px;
+}
+
+.slides li {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: inherit;
+    overflow: hidden;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center; 
+}
+
+.indicators {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 60px;
+    margin: 0;
+}
+
+.indicator-item {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    margin: 0 12px;
+    background-color: #e0e0e0;
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+    border-radius: 50%;
+}
+.indicator-item.active {
+    background-color: pink;
+}
+
+.section {
+    width: 100%;
+    height: 500px;
+}
+
+.ad {
+    display: inline-block;
+    width: 50%;
+    height: 500px;
+    background-color: #ddd;
+    text-align: center;
+    margin-right: -6px;
+}
+
+.people {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    height: 500px;
+    background-color: #eee;
+    text-align: center;
+}
+
+.people::after {
+    position: absolute;
+    display: block;
+    content: "";
+    left: -25px;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background: pink;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.regist {
+    width: 200px;
+    height: 50px;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+.regist p {
+    line-height: 50px;
+}
+
+footer p {
+    line-height: 50px;
+    background: #999;
+    text-align: center;
+}
