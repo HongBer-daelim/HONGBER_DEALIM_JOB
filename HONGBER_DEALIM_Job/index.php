@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -13,7 +16,7 @@
   <div class="header">
     <div class="logo"></div>
     <div class="nav_wrap">
-      <a href="/html/mypage.html">
+      <a href="/php/mypage.php">
         <nav class="nav_first">MY PAGE</nav>
       </a>
       <a href="">
@@ -29,11 +32,24 @@
         <nav>광고 줍기</nav>
       </a>
       <?php
-      session_start();
+      //일반 광고주, 홍버, 관리자가 로그인시 로그아웃을 네비게이션바에 표시
       if (!isset($_SESSION["hislog"]) && !isset($_SESSION["uislog"]) && !isset($_SESSION["mislog"])) {
-        echo '';
       } else {
         echo '<a href="/php/logout.php">';
+        echo '<nav>로그아웃</nav>';
+        echo '</a>';
+      }
+      //네이버 로그인시 로그아웃을 네비게이션바에 표시
+      if (!isset($_SESSION['naver_access_token'])) {
+      } else {
+        echo '<a href="/php/nlogout.php">';
+        echo '<nav>로그아웃</nav>';
+        echo '</a>';
+      }
+      //카카오 로그인시 로그아웃을 네비게이션바에 표시
+      if (!isset($_SESSION['kakao_access_token'])) {
+      } else {
+        echo '<a href="/php/klogout.php">';
         echo '<nav>로그아웃</nav>';
         echo '</a>';
       }
@@ -57,7 +73,7 @@
     <div class="ad">
       <form>
         <a href="/html/hlogin.html">광고주</a>
-        <a href="/html/ber_reg2.html">
+        <a href="/php/ber_reg2.php">
           <div class="regist">
             <p>회원이 아니세요?</p>
           </div>
@@ -65,9 +81,10 @@
       </form>
     </div>
     <div class="people">
+      <div class="down_btn"></div>
       <form>
-        <a href="/html/ulogin.html">홍버</a>
-        <a href="/html/ber_reg.html">
+        <a href="/php/ulogin.php">홍버</a>
+        <a href="/php/ber_reg.php">
           <div class="regist">
             <p>회원이 아니세요?</p>
           </div>

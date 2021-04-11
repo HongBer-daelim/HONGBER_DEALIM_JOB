@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>아이디 찾기</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/findid.css">
+</head>
+<body>
+  <form action="/php/hfindid.php" method="POST">
+    <div class="wrap">
+      <input type="text" name="name" class="name" placeholder="이름">
+      <input type="email" name="email" class="email" placeholder="이메일">
+      <input type="tel" name="phone" class="phone" placeholder="전화번호">
+      <input type="submit" name="findid" id="find_id" value="아이디 찾기" class="findid_btn">
+    </div>
+ </form>
+</body>
+</html>

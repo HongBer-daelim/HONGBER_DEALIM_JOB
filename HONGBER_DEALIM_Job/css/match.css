@@ -35,9 +35,21 @@ a {
 
 nav {
   display: inline-block;
-  width: 18%;
+  width: 16%;
   line-height: 50px;
   text-align: center;
+}
+
+.logout_nav {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  width: 60px;
+  line-height: 20px;
+  background-color: #fff;
+  font-size: 13px;
+  margin: 0 auto;
 }
 
 .info_wrap {

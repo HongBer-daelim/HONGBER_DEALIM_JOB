@@ -44,10 +44,22 @@ a {
 }
 
 nav {
-    display: inline-block;
-    width: 18%;
-    line-height: 50px;
-    text-align: center;
+  display: inline-block;
+  width: 16%;
+  line-height: 50px;
+  text-align: center;
+}
+
+.logout_nav {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  width: 60px;
+  line-height: 20px;
+  background-color: #fff;
+  font-size: 13px;
+  margin: 0 auto;
 }
 
 .profile {
@@ -76,9 +88,17 @@ nav {
   bottom: 0;
   width: 35px;
   height: 35px;
-  background: url(/css/image/camera.png) 0 0 no-repeat;
+  background: url(../css/image/camera.png) 0 0 no-repeat;
   background-size: cover;
-  cursor: pointer;
+}
+
+.camera_icon input {
+  position: absolute;
+  top: 5px;
+  left: 2px;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
 }
 
 .profile_info {
@@ -100,52 +120,27 @@ nav {
 }
 
 .history {
-  /* position: relative; */
-  /* display: inline-block; */
   width: 100%;
 }
 
-/* .history_btn {
-  position: absolute;
-  top: 50px;
-  right: 50px;
-  width: 100px;
-  height: 30px;
+.history_btn_wrap {
+  width: 50%;
+  text-align: right;
+  margin: 0 auto 10px;
+}
+
+.history_btn_wrap input {
+  width: 75px;
+  height: 25px;
+  box-sizing: border-box;
   cursor: pointer;
 }
 
-.history_btn:hover {
+.history_btn_wrap input:hover {
   background: pink;
 }
 
-.dropdown_content {
-  display: none;
-  position: absolute;
-  top: 80px;
-  right: 50px;
-  width: 100px;
-  height: 30px;
-}
-
-.history_hidden_btn1 {
-  display: block;
-  width: 100px;
-  height: 30px;
-  cursor: pointer;
-}
-
-.history_hidden_btn2 {
-  display: block;
-  width: 100px;
-  height: 30px;
-  cursor: pointer;
-}
-
-.show {
-  display: block;
-} */
-
-.history>div {
+.ing, .finish, .pick {
   width: 50%;
   height: 250px;
   padding: 50px 0;
@@ -153,11 +148,17 @@ nav {
   overflow: auto;
 }
 
+.pick {
+  background: #bbb;
+}
+
 .ing {
+  display: none;
   background: #ddd;
 }
 
 .finish {
+  display: none;
   background: #eee;
 }
 

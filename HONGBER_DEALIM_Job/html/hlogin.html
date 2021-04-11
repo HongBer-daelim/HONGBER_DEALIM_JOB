@@ -7,6 +7,27 @@
     <title>Log-In</title>
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/login.css">
+    <script>
+        function findid() {
+            const width = '700';
+            const height = '700';
+            
+            const left = Math.ceil((window.screen.width - width) / 2);
+            const top = Math.ceil((window.screen.height - height) / 2);
+
+            window.open('/html/findid.html', '아이디 찾기', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top + ',' + 'toolbars=no', 'scrollbars=no');
+        }
+        
+        function findpwd() {
+            const width = '700';
+            const height = '700';
+            
+            const left = Math.ceil((window.screen.width - width) / 2);
+            const top = Math.ceil((window.screen.height - height) / 2);
+
+            window.open('/html/findpwd.html', '아이디 찾기', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top + ',' + 'toolbars=no', 'scrollbars=no');
+        }
+    </script>
 </head>
 
 <body>
@@ -40,14 +61,14 @@
         </form>
         <form>
             <div class="find_wrap">
-                <a href="#" class="find_id">
+                <a href="" onclick="findid()" class="find_id">
                     아이디 찾기
                 </a>
-                <a href="#" class="find_password">
-                    비밀번호 찾기
+                <a href="" onclick="findpwd()" class="find_password">
+                  비밀번호 찾기
                 </a>
-                <a href="#" class="regist">
-                    회원가입
+                <a href="/php/ber_reg2.php" class="regist">
+                  회원가입
                 </a>
             </div>
         </form>

@@ -1,54 +1,47 @@
 @charset "UTF-8";
 
-* {
+body {
     margin: 0 auto;
     font-family: '나눔 고딕', NanumGothic, '돋움', Dotum, sans-serif;
 }
 
 a {
-    color: #555;
+    color: #000;
     text-decoration: none;
 }
-
-/* 
-.login_btn::after {
-    position: absolute;
-    display: block;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: coral;
-    content: "";
-} */
 
 hr{
     width: 370px;
     margin: 20px auto 20px auto;
-  }
-  input{
-    width: 370px;
-    height: 30px;
-  }
-  input:first-child{
-    margin-top: 50px;
-  }
-  .login_btn{
-    width: 385px;
-    height: 100px;
-    background-color: rgba(228, 82, 101, 0.733);
-    font-size: 30px;
-  }
-  .find_wrap{
-      margin-top: 30px;
-  }
+}
 
-  .find_wrap a{
-      margin: 0px 30px 0px 30px;
-  }
-  .find_wrap a:hover{
-    color: red;
-  }
+input{
+  width: 370px;
+  height: 30px;
+}
+
+input:first-child{
+  margin-top: 50px;
+}
+
+.login_btn{
+  width: 385px;
+  height: 100px;
+  background-color: rgba(228, 82, 101, 0.733);
+  font-size: 30px;
+}
+
+.find_wrap{
+    margin-top: 30px;
+}
+
+.find_wrap a{
+    margin: 0px 30px 0px 30px;
+}
+
+.find_wrap a:hover{
+  color: red;
+}
 /*------------------상단 nav-------------------*/
 .header {
     position: fixed;
@@ -76,16 +69,43 @@ hr{
 }
 
 nav {
-    display: inline-block;
-    width: 18%;
-    line-height: 50px;
-    text-align: center;
+  display: inline-block;
+  width: 16%;
+  line-height: 50px;
+  text-align: center;
+}
+
+.logout_nav {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  width: 60px;
+  line-height: 20px;
+  background-color: #fff;
+  font-size: 13px;
+  margin: 0 auto;
 }
 
 .info_wrap {
   text-align: center;
   margin-top: 100px;
 }
+
 input::placeholder{
   text-align: center;
+}
+
+#naverIdLogin{
+  text-align: center;
+}
+
+#KakaoIdLogin{
+  text-align: center;
+  height: 63px;
+}
+
+#Kakaoimg{
+  height: 55px;
+  width: 231.188px;
 }

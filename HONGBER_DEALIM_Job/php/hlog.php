@@ -1,5 +1,7 @@
 <?php
 include "config.php";
+session_start();
+error_reporting(0);
 
 $h_id = $_POST["id"];
 $h_pwd = $_POST["pwd"];
@@ -13,26 +15,24 @@ $mres = $connect->query($msql);
 $mrow = $mres->fetch();
 
 if ($hrow != null || $mrow != null) {
-    if($hrow != null){
-    session_start();
-    $_SESSION["hislog"] = true;
-    $_SESSION["hname"] = $hrow['h_name'];
-    $_SESSION["hid"] = $hrow['h_id'];
-    $_SESSION["hpwd"] = $hrow['h_pwd'];
-    $hname = $_SESSION["hname"];
+    if ($hrow != null) {      
+        $_SESSION["hislog"] = true;
+        $_SESSION["hname"] = $hrow['h_name'];
+        $_SESSION["hid"] = $hrow['h_id'];
+        $_SESSION["hpwd"] = $hrow['h_pwd'];
+        $hname = $_SESSION["hname"];
 
-    echo "<script>alert('광고주 {$hname}님 어서오세요.'); location.href='/index.php'</script>";
+        echo "<script>alert('광고주 {$hname}님 어서오세요.'); location.href='/index.php'</script>";
     }
-    if($mrow != null){
-        session_start();
+    if ($mrow != null) {
         $_SESSION["mislog"] = true;
         $_SESSION["mname"] = $mrow['mname'];
         $_SESSION["mid"] = $mrow['mid'];
         $_SESSION["mpwd"] = $mrow['mpwd'];
         $mname = $_SESSION["mname"];
-    
+
         echo "<script>alert('관리자 {$mname}님 어서오세요.'); location.href='/index.php'</script>";
-        }
+    }
 }
 
 if ($hrow == null) {
