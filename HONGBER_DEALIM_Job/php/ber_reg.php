@@ -40,7 +40,7 @@ error_reporting(0);
 			</a>
 			<?php
 			//일반 광고주, 홍버, 관리자가 로그인시 로그아웃을 네비게이션바에 표시
-			if (!isset($_SESSION["hislog"]) && !isset($_SESSION["uislog"]) && !isset($_SESSION["mislog"])) {
+			if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['mislog'])) {
 			} else {
 				echo '<a href="/php/logout.php">';
 				echo '<nav>로그아웃</nav>';
@@ -67,7 +67,9 @@ error_reporting(0);
 		<form action="/php/add_user.php" method="POST">
 			<input type="id" name="id" placeholder="아이디" required><br>
 			<hr>
-			<input type="password" name="pwd" placeholder="비밀번호" required><br>
+			<input type="password" name="pwd" placeholder="비밀번호"><br>
+			<hr>
+			<input type="password" name="rpwd" placeholder="비밀번호 확인"><br>
 			<hr>
 			<input type="name" name="name" placeholder="이름" required><br>
 			<hr>
@@ -79,6 +81,14 @@ error_reporting(0);
 			<hr>
 			<input type="submit" value="가입" class="submit"><br>
 		</form>
+		<script>
+			const pwd = document.getElementsByName('pwd').values;
+			const rpwd = document.getElementsByName('rpwd').values;
+			if (pwd != rpwd) {
+				alert('비밀번호가 일치하지 않습니다.');
+				window.location.replace('/php/ber_reg2.php');
+			}
+		</script>
 	</div>
 	<br>
 

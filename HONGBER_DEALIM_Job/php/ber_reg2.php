@@ -34,7 +34,7 @@ error_reporting(0);
 			</a>
 			<?php
 			//일반 광고주, 홍버, 관리자가 로그인시 로그아웃을 네비게이션바에 표시
-			if (!isset($_SESSION["hislog"]) && !isset($_SESSION["uislog"]) && !isset($_SESSION["mislog"])) {
+			if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['mislog'])) {
 			} else {
 				echo '<a href="/php/logout.php">';
 				echo '<nav>로그아웃</nav>';
@@ -61,7 +61,9 @@ error_reporting(0);
 		<form action="/php/add_hser.php" method="POST">
 			<input type="id" name="id" placeholder="아이디" required><br>
 			<hr>
-			<input type="password" name="pwd" placeholder="비밀번호" required><br>
+			<input type="password" name="pwd" id="pwd" placeholder="비밀번호" required><br>
+			<hr>
+			<input type="password" name="rpwd" id="rpwd" placeholder="비밀번호 확인" required onkeyup="checkpwd()"><br>
 			<hr>
 			<input type="name" name="name" placeholder="이름" required><br>
 			<hr>
@@ -71,10 +73,20 @@ error_reporting(0);
 			<hr>
 			<textarea cols="50" rows="20" placeholder="홍보하고 싶은 제품과 광고주 본인을 자신있게 어필해주세요! 홍보 정보를 담은 파일도 같이 담아주세요!" name="msg"></textarea><br>
 			<hr>
-			<input type="submit" value="가입" class="submit"><br>
+			<input type="submit" value="가입" class="submit" ><br>
 		</form>
 	</div>
+	<!-- 비밀번호 일치 확인 스크립트 -->
+	<script>
+		function checkpwd() {
+			let cpwd = document.getElementById('pwd').value;
+			let crpwd = document.getElementById('rpwd').value;
 
+			if (cpwd != crpwd) {
+			} else {
+			}
+		}
+	</script>
 </body>
 
 </html>

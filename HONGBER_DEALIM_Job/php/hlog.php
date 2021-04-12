@@ -16,20 +16,18 @@ $mrow = $mres->fetch();
 
 if ($hrow != null || $mrow != null) {
     if ($hrow != null) {      
-        $_SESSION["hislog"] = true;
-        $_SESSION["hname"] = $hrow['h_name'];
-        $_SESSION["hid"] = $hrow['h_id'];
-        $_SESSION["hpwd"] = $hrow['h_pwd'];
-        $hname = $_SESSION["hname"];
+        $_SESSION['hislog'] = true;
+        $_SESSION['hname'] = $hrow['h_name'];
+        $_SESSION['hid'] = $hrow['h_id'];
+        $hname = $_SESSION['hname'];
 
         echo "<script>alert('광고주 {$hname}님 어서오세요.'); location.href='/index.php'</script>";
     }
     if ($mrow != null) {
-        $_SESSION["mislog"] = true;
-        $_SESSION["mname"] = $mrow['mname'];
-        $_SESSION["mid"] = $mrow['mid'];
-        $_SESSION["mpwd"] = $mrow['mpwd'];
-        $mname = $_SESSION["mname"];
+        $_SESSION['mislog'] = true;
+        $_SESSION['mname'] = $mrow['mname'];
+        $_SESSION['mid'] = $mrow['mid'];
+        $mname = $_SESSION['mname'];
 
         echo "<script>alert('관리자 {$mname}님 어서오세요.'); location.href='/index.php'</script>";
     }

@@ -35,15 +35,27 @@ a {
 }
 
 nav {
-    display: inline-block;
-    width: 18%;
-    line-height: 50px;
-    text-align: center;
+  display: inline-block;
+  width: 16%;
+  line-height: 50px;
+  text-align: center;
+}
+
+.logout_nav {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  width: 60px;
+  line-height: 20px;
+  background-color: #fff;
+  font-size: 13px;
+  margin: 0 auto;
 }
 
 .info_wrap {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 .form_wrap {

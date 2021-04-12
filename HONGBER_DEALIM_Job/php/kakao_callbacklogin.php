@@ -62,6 +62,8 @@ if ($status_code == 200) {
 
 	if (!empty($row)) {
 		$name = $row['k_name'];
+		$_SESSION['kname'] = $name;
+		$_SESSION['kid'] = $id;
 		echo "<script>alert('{$name}님 어서오세요!'); location.href='/php/../index.php'</script>";
 	} else {
 		session_destroy();

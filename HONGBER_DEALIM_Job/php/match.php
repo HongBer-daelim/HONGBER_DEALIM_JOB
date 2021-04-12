@@ -1,7 +1,7 @@
 <?php
 include "config.php";
+session_start();
 error_reporting(0);
-
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -36,7 +36,7 @@ error_reporting(0);
                 </a>
                 <?php
                 //일반 광고주, 홍버, 관리자가 로그인시 로그아웃을 네비게이션바에 표시
-                if (!isset($_SESSION["hislog"]) && !isset($_SESSION["uislog"]) && !isset($_SESSION["mislog"])) {
+                if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['mislog'])) {
                 } else {
                     echo '<a href="/php/logout.php">';
                     echo '<nav>로그아웃</nav>';
@@ -82,7 +82,7 @@ error_reporting(0);
                             $result = $connect->query($sql);
                             while ($row = $result->fetch()) {
                                 echo '<tr>';
-                                echo '<td>' . $row['hm_num'] . '&nbsp;</td>';
+                                echo '<td>' . $row['hm_id'] . '&nbsp;</td>';
                                 echo '<td>' . $row['hm_sd'] . '&nbsp;</td>';
                                 echo '<td>' . $row['hm_ed'] . '&nbsp;</td>';
                                 echo '<td>' . $row['hm_name'] . '&nbsp;</td>';
@@ -114,7 +114,7 @@ error_reporting(0);
                         $result = $connect->query($sql);
                         while ($row = $result->fetch()) {
                             echo '<tr>';
-                            echo '<td>' . $row['um_num'] . '&nbsp;</td>';
+                            echo '<td>' . $row['um_id'] . '&nbsp;</td>';
                             echo '<td>' . $row['um_sd'] . '&nbsp;</td>';
                             echo '<td>' . $row['um_ed'] . '&nbsp;</td>';
                             echo '<td>' . $row['um_name'] . '&nbsp;</td>';

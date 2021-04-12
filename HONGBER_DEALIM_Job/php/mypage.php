@@ -1,9 +1,9 @@
 <?php
 include "config.php";
 session_start();
-// error_reporting(0);
+error_reporting(0);
 
-if (!isset($_SESSION["hislog"]) && !isset($_SESSION["uislog"]) && !isset($_SESSION["mislog"])) {
+if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['mislog'])) {
 } else {
 }
 
@@ -61,7 +61,7 @@ if (!isset($_SESSION['kakao_access_token'])) {
       </a>
       <?php
       //일반 광고주, 홍버, 관리자가 로그인시 로그아웃을 네비게이션바에 표시
-      if (!isset($_SESSION["hislog"]) && !isset($_SESSION["uislog"]) && !isset($_SESSION["mislog"])) {
+      if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['mislog'])) {
       } else {
         echo '<a href="/php/logout.php">';
         echo '<nav>로그아웃</nav>';
@@ -86,14 +86,15 @@ if (!isset($_SESSION['kakao_access_token'])) {
   </div>
   <div class="profile">
     <div class="profile_img">
-      <a href="<?php echo $profile_img; ?>" data-title="프로필 사진" data-lightbox="example-set">
-        <img src="<?php echo $profile_img; ?>" alt="프로필사진">
+      <a href="<?php
+                if ($profile_img != null) { echo $profile_img; } else { echo "/css/image/bpimg.png"; } ?>" data-title="프로필 사진" data-lightbox="example-set">
+        <img src="<?php if ($profile_img != null) { echo $profile_img; } else { echo "/css/image/bpimg.png";} ?>" alt="프로필사진">
       </a>
       <div class="camera_icon">
         <input type="file" name="pro_change" id="profile_change">
         <p class="blind">프로필 사진 변경</p>
+      </div>
     </div>
-  </div>
   </div>
   <div class="profile_info">
     <input type="text" placeholder="프로필 설명 테스트입니다."></input>
@@ -112,34 +113,21 @@ if (!isset($_SESSION['kakao_access_token'])) {
       <table>
         <tr>
           <td>number</td>
-          <td>홍보 기간</td>
+          <td colspan="2">홍보 기간</td>
           <td>홍보 수단</td>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>2021.03.01~2021.03.02</td>
-          <td>SNS</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>2021.03.01~2021.03.02</td>
-          <td>SNS</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>2021.03.01~2021.03.02</td>
-          <td>SNS</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>2021.03.01~2021.03.02</td>
-          <td>SNS</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>2021.03.01~2021.03.02</td>
-          <td>SNS</td>
-        </tr>
+        <?php
+        $sql = "SELECT * FROM mypick";//where id = '$id';
+        $result = $connect->query($sql);
+        while ($row = $result->fetch()) {
+          echo '<tr>';
+          echo '<td>' . $row['num'] . '</td>';
+          echo '<td>' . $row['mypick_sd'] . '</td>';
+          echo '<td>' . $row['mypick_ed'] . '</td>';
+          echo '<td>' . $row['mypick_means'] . '</td>';
+          echo '</tr>';
+        }
+        ?>
       </table>
     </div>
     <div class="ing" id="ing_id">
@@ -147,34 +135,21 @@ if (!isset($_SESSION['kakao_access_token'])) {
       <table>
         <tr>
           <td>number</td>
-          <td>홍보 기간</td>
+          <td colspan="2">홍보 기간</td>
           <td>홍보 수단</td>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>2021.03.01~2021.03.02</td>
-          <td>SNS</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>2021.03.01~2021.03.02</td>
-          <td>SNS</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>2021.03.01~2021.03.02</td>
-          <td>SNS</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>2021.03.01~2021.03.02</td>
-          <td>SNS</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>2021.03.01~2021.03.02</td>
-          <td>SNS</td>
-        </tr>
+        <?php
+        $sql = "SELECT * FROM mying";
+        $result = $connect->query($sql);
+        while ($row = $result->fetch()) {
+          echo '<tr>';
+          echo '<td>' . $row['num'] . '</td>';
+          echo '<td>' . $row['mying_sd'] . '</td>';
+          echo '<td>' . $row['mying_ed'] . '</td>';
+          echo '<td>' . $row['mying_means'] . '</td>';
+          echo '</tr>';
+        }
+        ?>
       </table>
     </div>
     <div class="finish" id="finish_id">
@@ -182,34 +157,21 @@ if (!isset($_SESSION['kakao_access_token'])) {
       <table>
         <tr>
           <td>number</td>
-          <td>홍보 기간</td>
+          <td colspan="2">홍보 기간</td>
           <td>홍보 수단</td>
         </tr>
-        <tr>
-          <td>1</td>
-          <td>2021.03.01~2021.03.02</td>
-          <td>SNS</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>2021.03.01~2021.03.02</td>
-          <td>SNS</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>2021.03.01~2021.03.02</td>
-          <td>SNS</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>2021.03.01~2021.03.02</td>
-          <td>SNS</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>2021.03.01~2021.03.02</td>
-          <td>SNS</td>
-        </tr>
+        <?php
+        $sql = "SELECT * FROM myed";
+        $result = $connect->query($sql);
+        while ($row = $result->fetch()) {
+          echo '<tr>';
+          echo '<td>' . $row['num'] . '</td>';
+          echo '<td>' . $row['myed_sd'] . '</td>';
+          echo '<td>' . $row['myed_ed'] . '</td>';
+          echo '<td>' . $row['myed_means'] . '</td>';
+          echo '</tr>';
+        }
+        ?>
       </table>
     </div>
   </div>

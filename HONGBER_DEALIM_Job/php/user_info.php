@@ -1,3 +1,8 @@
+<?php
+include "config.php";
+session_start();
+error_reporting(0);
+?>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -56,7 +61,7 @@
         </a>
         <?php
         //일반 광고주, 홍버, 관리자가 로그인시 로그아웃을 네비게이션바에 표시
-        if (!isset($_SESSION["hislog"]) && !isset($_SESSION["uislog"]) && !isset($_SESSION["mislog"])) {
+        if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['mislog'])) {
         } else {
           echo '<a href="/php/logout.php">';
           echo '<nav>로그아웃</nav>';
@@ -83,11 +88,11 @@
   <form action="/php/uimdb.php" method="POST">
     <div class="form_wrap">
       <p>등록기간</p>
-      <input type="date" name="start_d" id="s_d"><input type="date" name="end_d" id="e_d"><br>
+      <input type="date" name="start_d" id="s_d"><input type="date" name="end_d" id="e_d" required><br>
       <p>이름</p>
-      <input type="text" name="name" placeholder="ex)홍길동(이름)" required><br>
+      <input type="text" id="inpname" name="name" placeholder="ex)홍길동(이름)" maxlength="10" required readonly><br>
       <p>홍보수단</p>
-      <input type="text" name="means" placeholder="ex)SNS(홍보수단)" required><br>
+      <input type="text" name="means" placeholder="ex)SNS(홍보수단)" maxlength="50" required><br>
       <p>각오 한마디</p>
       <div class="res">
         <input type="text" name="resolution" placeholder="ex(각오한마디) 최대 50자" id="tr" onkeyup="tnn()" onkeydwon="tnn()" onkeypress="tnn()" maxlength="50" required>
@@ -98,6 +103,20 @@
       </div>
     </div>
   </form>
+  <?php
+  if (!isset($_SESSION['uislog'])) {
+  } else {
+    echo "<script>document.getElementById('inpname').value = '" . $_SESSION['uname'] . "'</script>";
+  }
+  if (!isset($_SESSION['naver_access_token'])) {
+  } else {
+    echo "<script>document.getElementById('inpname').value = '" . $_SESSION['nname'] . "'</script>";
+  }
+  if (!isset($_SESSION['kakao_access_token'])) {
+  } else {
+    echo "<script>document.getElementById('inpname').value = '" . $_SESSION['kname'] . "'</script>";
+  }
+  ?>
   <script>
     document.getElementById('s_d').value = new Date().toISOString().substring(0, 10);
     document.getElementById('s_d').min = new Date().toISOString().substring(0, 10);

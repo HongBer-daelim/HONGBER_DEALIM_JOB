@@ -16,21 +16,19 @@ $mrow = $mres->fetch();
 if ($urow != null  || $mrow != null) {
     if ($urow != null) {
         session_start();
-        $_SESSION["uislog"] = true;
-        $_SESSION["uname"] = $urow['u_name'];
-        $_SESSION["uid"] = $hrow['u_id'];
-        $_SESSION["upwd"] = $hrow['u_pwd'];
-        $uname = $_SESSION["hname"];
+        $_SESSION['uislog'] = true;
+        $_SESSION['uname'] = $urow['u_name'];
+        $_SESSION['uid'] = $hrow['u_id'];
+        $uname = $_SESSION['hname'];
 
         echo "<script>alert('홍버 {$uname}님 어서오세요.'); location.href='/index.php'</script>";
     }
     if ($mrow != null) {
         session_start();
-        $_SESSION["mislog"] = true;
-        $_SESSION["mname"] = $mrow['mname'];
-        $_SESSION["mid"] = $mrow['mid'];
-        $_SESSION["mpwd"] = $mrow['mpwd'];
-        $mname = $_SESSION["mname"];
+        $_SESSION['mislog'] = true;
+        $_SESSION['mname'] = $mrow['mname'];
+        $_SESSION['mid'] = $mrow['mid'];
+        $mname = $_SESSION['mname'];
 
         echo "<script>alert('관리자 {$mname}님 어서오세요.'); location.href='/index.php'</script>";
     }

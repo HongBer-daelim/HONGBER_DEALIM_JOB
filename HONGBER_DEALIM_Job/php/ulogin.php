@@ -35,7 +35,7 @@ error_reporting(0);
                 </a>
                 <?php
                 //일반 광고주, 홍버, 관리자가 로그인시 로그아웃을 네비게이션바에 표시
-                if (!isset($_SESSION["hislog"]) && !isset($_SESSION["uislog"]) && !isset($_SESSION["mislog"])) {
+                if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['mislog'])) {
                 } else {
                     echo '<a href="/php/logout.php">';
                     echo '<nav>로그아웃</nav>';
