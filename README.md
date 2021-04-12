@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # HongBer
 
 ##FRONT END, BACK END
