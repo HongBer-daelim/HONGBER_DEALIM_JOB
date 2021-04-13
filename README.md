@@ -1,9 +1,9 @@
 # HongBer
 
 ## FRONT END, BACK END
-  + https://github.com/leesh9098
-  + https://github.com/WonDaeHo
-  + https://github.com/xddsr
+  + https://github.com/leesh9098 FRONT END
+  + https://github.com/WonDaeHo FRONT END
+  + https://github.com/xddsr BACK END
 
 ------------
 PHP파일에서 db연결 구문은 db서버의 정보가 노출되므로 업로드하지 않았습니다.
