@@ -1,5 +1,6 @@
 <?php
 include "config.php";
+session_start();
 error_reporting(0);
 
 $u_id = $_POST["id"];
@@ -15,16 +16,16 @@ $mrow = $mres->fetch();
 
 if ($urow != null  || $mrow != null) {
     if ($urow != null) {
-        session_start();
         $_SESSION['uislog'] = true;
         $_SESSION['uname'] = $urow['u_name'];
-        $_SESSION['uid'] = $hrow['u_id'];
-        $uname = $_SESSION['hname'];
+        $_SESSION['uid'] = $urow['u_id'];
+        $_SESSION['upwd'] = $urow['u_pwd'];
+        $_SESSION['uemail'] = $urow['u_email'];
+        $uname = $_SESSION['uname'];
 
         echo "<script>alert('홍버 {$uname}님 어서오세요.'); location.href='/index.php'</script>";
     }
     if ($mrow != null) {
-        session_start();
         $_SESSION['mislog'] = true;
         $_SESSION['mname'] = $mrow['mname'];
         $_SESSION['mid'] = $mrow['mid'];

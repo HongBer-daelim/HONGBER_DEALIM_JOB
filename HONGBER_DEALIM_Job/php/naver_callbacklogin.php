@@ -46,6 +46,7 @@ if ($status_code == 200) {
 	$id =  $me_responseArr['response']['id'];
 	$token = $responseArr['access_token'];
 	$retoken = $responseArr['refresh_token'];
+	$email =  $me_responseArr['response']['email'];
 
 	// DB에 저장된 접근토큰값 갱신
 	$sql = "SELECT * FROM nuser WHERE n_id = '$id'";
@@ -65,6 +66,7 @@ if ($status_code == 200) {
 		$name = $row['n_name'];
 		$_SESSION['nname'] = $name;
 		$_SESSION['nid'] = $id;
+		$_SESSION['nemail'] = $email;
 		echo "<script>alert('{$name}님 어서오세요!'); location.href='../index.php'</script>";
 	} else {
 		session_destroy();
@@ -74,3 +76,4 @@ if ($status_code == 200) {
 	session_destroy();
 	echo "<script>alert('토큰값을 가져오지 못했습니다.'); location.href='../index.php'</script>";
 }
+?>

@@ -2,6 +2,10 @@
 include "config.php";
 session_start();
 error_reporting(0);
+
+if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token'])) {
+  echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/index.php'</script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -40,65 +44,73 @@ error_reporting(0);
 </head>
 
 <body>
-  <div class="info_wrap">
-    <div class="header">
-      <div class="logo"></div>
-      <div class="nav_wrap">
-        <a href="/php/mypage.php">
-          <nav class="nav_first">MY PAGE</nav>
-        </a>
-        <a href="">
-          <nav>서비스 소개</nav>
-        </a>
-        <a href="/php/match.php">
-          <nav>광고 매칭</nav>
-        </a>
-        <a href="/html/spread.html">
-          <nav>광고 뿌리기</nav>
-        </a>
-        <a href="/html/pickup.html">
-          <nav>광고 줍기</nav>
-        </a>
-        <?php
-        //일반 광고주, 홍버, 관리자가 로그인시 로그아웃을 네비게이션바에 표시
-        if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['mislog'])) {
-        } else {
-          echo '<a href="/php/logout.php">';
-          echo '<nav>로그아웃</nav>';
-          echo '</a>';
-        }
-        //네이버 로그인시 로그아웃을 네비게이션바에 표시
-        if (!isset($_SESSION['naver_access_token'])) {
-        } else {
-          echo '<a href="/php/nlogout.php">';
-          echo '<nav>로그아웃</nav>';
-          echo '</a>';
-        }
-        //카카오 로그인시 로그아웃을 네비게이션바에 표시
-        if (!isset($_SESSION['kakao_access_token'])) {
-        } else {
-          echo '<a href="/php/klogout.php">';
-          echo '<nav>로그아웃</nav>';
-          echo '</a>';
-        }
-        ?>
-      </div>
+  <!-- 상단 바 -->
+  <header class="nav">
+    <div class="logo">
+      <a href="/index.php">
+        <span>HONGBER</span><br>
+      </a>
     </div>
-  </div>
+    <div>
+      <a href="/php/mypage.php">
+        MY PAGE
+      </a>
+    </div>
+    <div>
+      <a href="/php/match.php">
+        광고 매칭
+      </a>
+    </div>
+    <div>
+      <a href="/html/spread.html">
+        광고 뿌리기
+      </a>
+    </div>
+    <div>
+      <a href="/php/pickup.php">
+        광고 줍기
+      </a>
+    </div>
+    <?php
+    //일반 광고주, 홍버, 관리자가 로그인시 로그아웃을 네비게이션바에 표시
+    if (!isset($_SESSION["hislog"]) && !isset($_SESSION["uislog"]) && !isset($_SESSION["mislog"])) {
+    } else {
+      echo '<div>';
+      echo '<a href="/php/logout.php">';
+      echo '로그아웃';
+      echo '</a>';
+      echo '</div>';
+    }
+    //네이버 로그인시 로그아웃을 네비게이션바에 표시
+    if (!isset($_SESSION['naver_access_token'])) {
+    } else {
+      echo '<a href="/php/nlogout.php">';
+      echo '<nav>로그아웃</nav>';
+      echo '</a>';
+    }
+    //카카오 로그인시 로그아웃을 네비게이션바에 표시
+    if (!isset($_SESSION['kakao_access_token'])) {
+    } else {
+      echo '<a href="/php/klogout.php">';
+      echo '<nav>로그아웃</nav>';
+      echo '</a>';
+    }
+    ?>
+  </header>
   <form action="/php/himdb.php" method="POST">
     <div class="form_wrap">
-      <p>등록기간</p>
-      <input type="date" name="start_d" id="s_d"><input type="date" name="end_d" id="e_d" required><br>
       <p>이름</p>
-      <input type="text" id="inpname" name="name" placeholder="ex)홍길동(이름)" maxlength="10" required readonly><br>
-      <p>홍보수단</p>
-      <input type="text" name="means" placeholder="ex)SNS(홍보수단)" maxlength="50" required><br>
-      <p>각오 한마디</p>
+      <input type="text" id="inpname" name="name" placeholder="ex)홍길동(이름)" required readonly><br>
+      <p>홍보할 제품 사진 업로드</p>
+      <input type="file" name="means" id="imgInp" class="edit" accept="image/gif, image/jpeg, image/png"><br>
+      <p>상세설명 및 요구사항</p>
       <div class="res">
         <input type="text" name="resolution" placeholder="ex(각오한마디) 최대 50자" id="tr" onkeyup="tnn()" onkeydwon="tnn()" onkeypress="tnn()" maxlength="50" required>
       </div>
+      <input type="number" id="tn" value="0" readonly><br>
+      <p>등록기간</p>
+      <input type="date" name="start_d" id="s_d"><input type="date" name="end_d" id="e_d" required><br>
       <div>
-        <input type="number" id="tn" value="0" readonly><br>
         <input type="submit" value="등록" id="submit">
       </div>
     </div>

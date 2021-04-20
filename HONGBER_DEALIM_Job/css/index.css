@@ -1,80 +1,87 @@
 @charset "UTF-8";
+/*----------------공통영역-------------*/
 body {
   margin: 0 auto;
   font-family: '나눔 고딕', NanumGothic, '돋움', Dotum, sans-serif;
 }
-
 a {
   color: #000;
   text-decoration: none;
 }
-
-.header {
-  position: fixed;
-  width: 100%;
+#wrap{
+ margin: 0 auto;
+}
+/*----------------상단바 영역-------------*/
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 1280px;
   height: 50px;
-  background-color: #aaa;
+  background-color: white;
+  border-top: 3px solid #999;
+  border-bottom: 3px solid #999;
+  margin: 0 auto;
+  font-size: 20px;
   z-index: 1;
 }
-
-.logo {
-  display: inline-block;
-  width: 200px;
-  height: 100%;
-  background: #eee;
-}
-
-.nav_wrap {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 77%;
-  height: 100%;
-  text-align: center;
-}
-
-nav {
-  display: inline-block;
-  width: 16%;
+header > div{
   line-height: 50px;
-  text-align: center;
+  padding: 5px 0;
 }
-
+.logo {
+  margin-top: 5px;
+  background: #2f3542;
+  padding-top: 10px;
+  height: 30px;
+}
+.logo span{
+  border-top: 3px solid red;
+  border-bottom: 3px solid red;
+  width: 100%;
+  color: #fff;
+}
+.nav_p {
+  line-height: 40px;
+  font-size: 16px;
+}
+.nav_p:hover {
+  border-bottom: 2px solid rgba(0,0,0,0.2)
+}
+.nav_a:hover {
+  font-size: 18px;
+  font-weight: bold;
+}
 .logout_nav {
   display: none;
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  width: 60px;
-  line-height: 20px;
   background-color: #fff;
-  font-size: 13px;
-  margin: 0 auto;
 }
-
+/*----------------슬라이드 영역-------------*/
 .banner {
   position: relative;
-  width: 100%;
-  height: 450px !important;
+  width: 1280px;
+  height: 500px !important;
   padding-top: 50px;
   margin: 0 auto 50px;
-}
 
+}
+.slides {
+  height: 500px;
+}
 .slides li {
   position: absolute;
   top: 50px;
   left: 0;
   width: 100%;
-  height: inherit;
+  height: 500px;
   overflow: hidden;
 }
 
-.banner img {
+.slides li img {
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: top;
-  /* padding-top: 50px; */
+  margin: 0 auto;
 }
 
 .indicators {
@@ -82,7 +89,7 @@ nav {
   text-align: center;
   left: 0;
   right: 0;
-  bottom: 60px;
+  bottom: -30px;
   margin: 0;
 }
 
@@ -98,47 +105,92 @@ nav {
   transition: background-color .3s;
   border-radius: 50%;
 }
-
 .indicator-item.active {
   background-color: pink;
 }
-
-.section {
-  width: 100%;
-  height: 500px;
-}
-
-.ad {
-  display: inline-block;
-  width: 50%;
-  height: 500px;
-  background-color: #ddd;
-  text-align: center;
-  margin-right: -6px;
-}
-
-.people {
-  position: relative;
-  display: inline-block;
-  width: 50%;
-  height: 500px;
-  background-color: #eee;
-  text-align: center;
-}
-
-.regist {
-  width: 200px;
-  height: 50px;
-  background-color: #fff;
+/*---------------------------------컨텐츠영역--------------------------------------*/
+.content_area {
   margin: 0 auto;
+  width: 1280px;
+  height: 350px;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 20px;
+  overflow: hidden;
 }
-
-.regist p {
-  line-height: 50px;
+.content_area h1{
+  font-size: 30px;
+  font-weight: bold;
 }
-
-footer p {
+.content {
+  width: 1280px;
+  height: 200px;
+}
+/*---------------------로그인 및 회원가입 영역------------------*/
+.dropbtn {
+  background-color: white;
+  color: #000;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+.dropdown {
+  position: relative;
   line-height: 50px;
-  background: #999;
+  padding: 0;
+  margin-top: 0;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  min-width: 180px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.dropdown-content a {
+  border-left: 0;
+}
+.dropdown-content a+a>p {
+  border-top: 1px solid #bbb;
+}
+.dropdown-content p {
+  text-align: center;
+  color: black;
+}
+.dropdown-content p:hover {
+  background-color: #f1f1f1
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown:hover .dropbtn {
+  background-color: #f1f1f1;
+}
+/*-----------------------풋터영역-------------------------*/
+
+footer{
+  margin: 0 auto;
+  width: 1280px;
+  line-height: 50px;
+  background:white;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
   text-align: center;
 }
+/*-----------------------스크롤바--------------------------*/
+body::-webkit-scrollbar {
+  width: 10px;
+  }
+  body::-webkit-scrollbar-thumb {
+  background-color: #2f3542;
+  border-radius: 5px;
+  }
+  body::-webkit-scrollbar-track {
+  background-color: grey;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 5px white;
+  }

@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 session_start();
-error_reporting(0);
+//error_reporting(0);
 
 if ($_SESSION['kakao_state'] != $_GET["state"]) {
 	echo "에러" . $_GET["state"];
@@ -71,20 +71,19 @@ if ($_SESSION['kakao_state'] != $_GET["state"]) {
 			$name =  $me_responseArr['properties']['nickname'];
 			$email =  $me_responseArr['kakao_account']['email'];
 			$pimg =  $me_responseArr['properties']['profile_image'];
-			$tpimg =  $me_responseArr['properties']['thumbnail_image'];
 		}
 
 		// 기존 유저 테이블에서 이름과 이메일을 검색하여 1개의 계정만 가지도록 하기
 		// 카카오는 전화번호를 필수 항목으로 하지 못하여 이름과 이메일만을 검색
-		$ksql = "SELECT * FROM kuser WHERE k_id = '$id'";
+		$ksql = "SELECT * FROM kuser WHERE k_email = '$email'";
 		$kres = $connect->query($ksql);
 		$krow = $kres->fetch();
 
-		$usql = "SELECT * FROM user WHERE u_name = '$name' AND u_email = '$email'";
+		$usql = "SELECT * FROM user WHERE u_email = '$email'";
 		$ures = $connect->query($usql);
 		$urow = $ures->fetch();
 
-		$nsql = "SELECT * FROM nuser WHERE n_name = '$name' AND n_email = '$email'";
+		$nsql = "SELECT * FROM nuser WHERE n_email = '$email'";
 		$nres = $connect->query($nsql);
 		$nrow = $nres->fetch();
 
@@ -92,10 +91,11 @@ if ($_SESSION['kakao_state'] != $_GET["state"]) {
 			session_destroy();
 			echo "<script>alert('이미 가입된 유저입니다.'); location.href='../index.php'</script>";
 		} else {
-			$sql = "insert into kuser (k_id, k_name, k_email, k_pimg, k_tpimg, token, rtoken)";
-			$sql = $sql . "values('$id', '$name', '$email', '$pimg', '$tpimg', '$token', '$retoken')";
+			$sql = "insert into kuser (k_id, k_name, k_email, k_pimg, token, rtoken)";
+			$sql = $sql . "values('$id', '$name', '$email', '$pimg', '$token', '$retoken')";
 
 			if ($connect->query($sql)) {
+				session_destroy();
 				echo "<script>alert('{$name}님 등록되었습니다.'); location.href='../index.php'</script>";
 			} else {
 				session_destroy();

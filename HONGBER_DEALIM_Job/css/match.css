@@ -1,4 +1,4 @@
-
+/*----------------------전체 반영--------------------*/
 body {
   margin: 0 auto;
   font-family: '나눔 고딕', NanumGothic, '돋움', Dotum, sans-serif;
@@ -7,140 +7,150 @@ a {
   color: #000;
   text-decoration: none;
 }
-/*-----------------------상단바--------------------------*/
-.header {
-  position: fixed;
-  top: 0;
-  width: 100%;
+#wrap{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+/*----------------상단바 영역-------------*/
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 1280px;
   height: 50px;
-  background-color: #aaa;
+  background-color: white;
+  border-top: 3px solid #999;
+  border-bottom: 3px solid #999;
+  margin: 0 auto;
+  font-size: 20px;
   z-index: 1;
 }
-
-.logo {
-  display: block;
-  width: 200px;
-  height: 100%;
-  background: #eee;
+header > div{
+  line-height: 50px;
+  padding: 5px 0;
 }
-
-.nav_wrap {
+.logo {
+  margin-top: 5px;
+  background: #2f3542;
+  padding-top: 10px;
+  height: 30px;
+}
+.logo span{
+  border-top: 3px solid red;
+  border-bottom: 3px solid red;
+  width: 100%;
+  color: #fff;
+}
+.nav_p {
+  line-height: 40px;
+  font-size: 16px;
+}
+.nav_p:hover {
+  border-bottom: 2px solid rgba(0,0,0,0.2)
+}
+.nav_a:hover {
+  font-size: 18px;
+  font-weight: bold;
+}
+.logout_nav {
+  display: none;
+  background-color: #fff;
+}
+/*-----------------------li--------------------------*/
+.match_wrap{
+position: relative;
+display: flex;
+flex-direction: row;
+align-content: flex-start;
+flex-wrap: wrap;
+align-items: flex-start;
+width: 1280px;
+height: 100%;
+margin: 0 auto;
+}
+.honor_card{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 300px;
+  justify-content: space-around;
+  align-content: space-around;
+  align-items: flex-start;
+  margin-left: 20px;
+  margin-top: 50px;
+  text-align: center;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+}
+.hm_thumb{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0);
+}
+.hm_thumb > img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.hm_info{
+  width: 200px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.hm_img{
+  width: 300px;
+  height: 200px;
+  margin-top: 0px;
+  border-radius: 5px;
+}
+.hm_comment{
+  margin-top: 10px;
+  width: 300px;
+  height: 80px;
+  border-radius: 5px;
+}
+.hm_date{
+  width: 300px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.honor_card div{
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.send{
+  width: 300px;
+  height: 20px;
+}
+/*-----------------------스크롤바--------------------------*/
+body::-webkit-scrollbar {
+width: 10px;
+}
+body::-webkit-scrollbar-thumb {
+background-color: #2f3542;
+border-radius: 10px;
+}
+body::-webkit-scrollbar-track {
+background-color: grey;
+border-radius: 10px;
+box-shadow: inset 0px 0px 5px white;
+}
+/*-----------------------등록영역--------------------------*/
+.reg_btn {
   position: absolute;
   top: 0;
   right: 0;
-  width: 77%;
-  height: 100%;
-  text-align: center;
+  width: 65px;
+  height: 25px;
 }
-
-nav {
-  display: inline-block;
-  width: 16%;
-  line-height: 50px;
-  text-align: center;
-}
-
-.logout_nav {
-  display: none;
+.reg_rm_btn{
   position: absolute;
-  top: 15px;
-  right: 25px;
-  width: 60px;
-  line-height: 20px;
-  background-color: #fff;
-  font-size: 13px;
-  margin: 0 auto;
-}
-
-.info_wrap {
-text-align: center;
-margin-top: 100px;
-}
-/*-----------------------li--------------------------*/
-#match_wrap{
-display: block;
-border: 1px solid red;
-width: 100%;
-height: 600px;
-}
-.hongber_li{
-position: relative;
-display: inline-block;
-border: 1px solid red;
-width: 700px;
-height: 600px;
-overflow-y: scroll;
-overflow-x: hidden;
-}
-
-.honor_li{
-position: relative;
-display: inline-block;
-border: 1px solid red;
-width: 700px;
-height: 600px;
-overflow-y: scroll;
-overflow-x: hidden;
-}
-/*-----------------------스크롤바--------------------------*/
-.hongber_li::-webkit-scrollbar {
-width: 10px;
-}
-.hongber_li::-webkit-scrollbar-thumb {
-background-color: #2f3542;
-border-radius: 10px;
-}
-.hongber_li::-webkit-scrollbar-track {
-background-color: grey;
-border-radius: 10px;
-box-shadow: inset 0px 0px 5px white;
-}
-.honor_li::-webkit-scrollbar {
-width: 10px;
-}
-.honor_li::-webkit-scrollbar-thumb {
-background-color: #2f3542;
-border-radius: 10px;
-}
-.honor_li::-webkit-scrollbar-track {
-background-color: grey;
-border-radius: 10px;
-box-shadow: inset 0px 0px 5px white;
-}
-/*-----------------------테이블 영역--------------------------*/
-table {
-  width: 700px;
-  border-top: 1px solid #444444;
-  border-collapse: collapse;
-}
-th, td {
-  border-bottom: 1px solid #444444;
-  padding: 10px;
-  text-align: center;
-}
-thead tr {
-  background-color: #FFCD00;
-  color: #ffffff;
-}
-tbody tr:nth-child(2n) {
-  background-color: #F5DF4D;
-}
-tbody tr:nth-child(2n+1) {
-  background-color: #939597;
-}
-/*-----------------------등록영역--------------------------*/
-.honor_li button{
-position: absolute;
-right: 0;
-top: 0;
-width: 65px;
-height: 36px;
-}
-
-.reg_btn {
-position: absolute;
-right: 0;
-top: 0;
-width: 65px;
-
+  top: 25px;
+  right: 0;
+  width: 65px;
+  height: 25px;
 }

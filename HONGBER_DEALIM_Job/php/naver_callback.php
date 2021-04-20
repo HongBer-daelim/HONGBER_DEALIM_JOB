@@ -75,15 +75,15 @@ if ($_SESSION['naver_state'] != $_GET["state"]) {
 
 			// 기존 유저 테이블에서 이름과 이메일을 검색하여 1개의 계정만 가지도록 하기
 			// 카카오는 전화번호를 필수 항목으로 하지 못하여 이름과 이메일만을 검색
-			$ksql = "SELECT * FROM kuser WHERE k_name = '$name' AND k_email = '$email'";
+			$ksql = "SELECT * FROM kuser WHERE k_email = '$email'";
 			$kres = $connect->query($ksql);
 			$krow = $kres->fetch();
 
-			$usql = "SELECT * FROM user WHERE u_name = '$name' AND u_email = '$email' AND u_phone = '$phone'";
+			$usql = "SELECT * FROM user WHERE u_email = '$email' OR u_phone = '$phone'";
 			$ures = $connect->query($usql);
 			$urow = $ures->fetch();
 
-			$nsql = "SELECT * FROM nuser WHERE n_id = '$id'";
+			$nsql = "SELECT * FROM nuser WHERE n_email = '$email' OR u_phone = '$phone'";
 			$nres = $connect->query($nsql);
 			$nrow = $nres->fetch();
 
@@ -95,6 +95,7 @@ if ($_SESSION['naver_state'] != $_GET["state"]) {
 				$sql = $sql . "values('$id', '$name', '$phone', '$email', '$pimg', '$token', '$retoken')";
 
 				if ($connect->query($sql)) {
+					session_destroy();
 					echo "<script>alert('{$name}님 등록되었습니다.'); location.href='../index.php'</script>";
 				} else {
 					echo "<script>alert('회원 가입에 실패하였습니다. 다시 시도해주세요.'); location.href='../index.php'</script>";
@@ -102,6 +103,7 @@ if ($_SESSION['naver_state'] != $_GET["state"]) {
 			}
 		}
 	} else {
+		session_destroy();
 		echo "<script>alert('회원 가입에 실패하였습니다. 다시 시도해주세요.'); location.href='../index.php'</script>";
 	}
 }

@@ -17,78 +17,111 @@ error_reporting(0);
 	</script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.js">
 	</script>
+	<script>
+		function inputPhoneNumber(obj) {
+			var number = obj.value.replace(/[^0-9]/g, "");
+			var phone = "";
+
+			if (number.length < 4) {
+				return number;
+			} else if (number.length < 7) {
+				phone += number.substr(0, 3);
+				phone += "-";
+				phone += number.substr(3);
+			} else if (number.length < 11) {
+				phone += number.substr(0, 3);
+				phone += "-";
+				phone += number.substr(3, 3);
+				phone += "-";
+				phone += number.substr(6);
+			} else {
+				phone += number.substr(0, 3);
+				phone += "-";
+				phone += number.substr(3, 4);
+				phone += "-";
+				phone += number.substr(7);
+			}
+			obj.value = phone;
+		}
+	</script>
 </head>
 
 <body>
-	<div class="header">
-		<div class="logo"></div>
-		<div class="nav_wrap">
-			<a href="/php/mypage.php">
-				<nav class="nav_first">MY PAGE</nav>
+	<!-- 상단 바 -->
+	<header class="nav">
+		<a href="/index.php">
+			<div class="logo">
+				<span>HONGBER</span><br>
+			</div>
+		</a>
+		<div>
+			<a href="/php/mypage.php" class="nav_a">
+				<p class="nav_p">MY PAGE</p>
 			</a>
-			<a href="">
-				<nav>서비스 소개</nav>
-			</a>
-			<a href="/php/match.php">
-				<nav>광고 매칭</nav>
-			</a>
-			<a href="/html/spread.html">
-				<nav>광고 뿌리기</nav>
-			</a>
-			<a href="/html/pickup.html">
-				<nav>광고 줍기</nav>
-			</a>
-			<?php
-			//일반 광고주, 홍버, 관리자가 로그인시 로그아웃을 네비게이션바에 표시
-			if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['mislog'])) {
-			} else {
-				echo '<a href="/php/logout.php">';
-				echo '<nav>로그아웃</nav>';
-				echo '</a>';
-			}
-			//네이버 로그인시 로그아웃을 네비게이션바에 표시
-			if (!isset($_SESSION['naver_access_token'])) {
-			} else {
-				echo '<a href="/php/nlogout.php">';
-				echo '<nav>로그아웃</nav>';
-				echo '</a>';
-			}
-			//카카오 로그인시 로그아웃을 네비게이션바에 표시
-			if (!isset($_SESSION['kakao_access_token'])) {
-			} else {
-				echo '<a href="/php/klogout.php">';
-				echo '<nav>로그아웃</nav>';
-				echo '</a>';
-			}
-			?>
 		</div>
-	</div>
+		<div>
+			<a href="/php/match.php" class="nav_a">
+				<p class="nav_p">광고 매칭</p>
+			</a>
+		</div>
+		<div>
+			<a href="/php/spread.php" class="nav_a">
+				<p class="nav_p">광고 뿌리기</p>
+			</a>
+		</div>
+		<div>
+			<a href="/php/pickup.php" class="nav_a">
+				<p class="nav_p">광고 줍기</p>
+			</a>
+		</div>
+		<?php
+		//일반 광고주, 홍버, 관리자가 로그인시 로그아웃을 네비게이션바에 표시
+		if (!isset($_SESSION["hislog"]) && !isset($_SESSION["uislog"]) && !isset($_SESSION["mislog"])) {
+		} else {
+			echo '<div>';
+			echo '<a href="/php/logout.php" class="nav_a">';
+			echo '<p class="nav_p">로그아웃</p>';
+			echo '</a>';
+			echo '</div>';
+		}
+		//네이버 로그인시 로그아웃을 네비게이션바에 표시
+		if (!isset($_SESSION['naver_access_token'])) {
+		} else {
+			echo '<div>';
+			echo '<a href="/php/nlogout.php" class="nav_a">';
+			echo '<p class="nav_p">로그아웃</p>';
+			echo '</a>';
+			echo '</div>';
+		}
+		//카카오 로그인시 로그아웃을 네비게이션바에 표시
+		if (!isset($_SESSION['kakao_access_token'])) {
+		} else {
+			echo '<div>';
+			echo '<a href="/php/klogout.php" class="nav_a">';
+			echo '<p class="nav_p">로그아웃</p>';
+			echo '</a>';
+			echo '</div>';
+		}
+		?>
+	</header>
 	<div class="info_wrap">
 		<form action="/php/add_user.php" method="POST">
 			<input type="id" name="id" placeholder="아이디" required><br>
 			<hr>
-			<input type="password" name="pwd" placeholder="비밀번호"><br>
+			<input type="password" name="pwd" id="pwd" placeholder="비밀번호" required><br>
 			<hr>
-			<input type="password" name="rpwd" placeholder="비밀번호 확인"><br>
+			<input type="password" name="rpwd" id="rpwd" placeholder="비밀번호 확인" required><br>
 			<hr>
 			<input type="name" name="name" placeholder="이름" required><br>
 			<hr>
-			<input type="tel" name="phone" placeholder="your phone number" required><br>
+			<input type="tel" name="phone" placeholder="your phone number" required onKeyup="inputPhoneNumber(this)" maxlength="13"><br>
 			<hr>
 			<input type="email" name="email" placeholder="E-mail" required><br>
 			<hr>
-			<textarea cols="50" rows="20" placeholder="홍보하고 싶은 제품과 광고주 본인을 자신있게 어필해주세요! 홍보 정보를 담은 파일도 같이 담아주세요!" name="msg"></textarea><br>
+			<textarea cols="50" rows="20" placeholder="홍보하고 싶은 제품과 광고주 본인을 자신있게 어필해주세요!(최대 200자)" name="msg" maxlength="200"></textarea><br>
 			<hr>
 			<input type="submit" value="가입" class="submit"><br>
 		</form>
-		<script>
-			const pwd = document.getElementsByName('pwd').values;
-			const rpwd = document.getElementsByName('rpwd').values;
-			if (pwd != rpwd) {
-				alert('비밀번호가 일치하지 않습니다.');
-				window.location.replace('/php/ber_reg2.php');
-			}
-		</script>
 	</div>
 	<br>
 
@@ -133,6 +166,18 @@ error_reporting(0);
 			<img id="Kakaoimg" src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_narrow.png"></a>
 	</div>
 	<!-- 카카오아이디로로그인 버튼 노출 영역 -->
+
+	<!-- 비밀번호 일치 확인 스크립트 -->
+	<script>
+		$('#rpwd').focusout(function() {
+			if ($('#pwd').val() != $('#rpwd').val()) {
+				alert("비밀번호가 일치하지 않습니다.");
+				document.getElementById('rpwd').value = "";
+				$('#pwd').focus();
+			} else {}
+
+		});
+	</script>
 </body>
 
 </html>

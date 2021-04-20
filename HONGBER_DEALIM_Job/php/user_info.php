@@ -2,6 +2,10 @@
 include "config.php";
 session_start();
 error_reporting(0);
+
+if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token'])) {
+  echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/index.php'</script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -42,13 +46,12 @@ error_reporting(0);
 <body>
   <div class="info_wrap">
     <div class="header">
-      <div class="logo"></div>
+      <a href="/index.php">
+        <div class="logo"></div>
+      </a>
       <div class="nav_wrap">
         <a href="/php/mypage.php">
           <nav class="nav_first">MY PAGE</nav>
-        </a>
-        <a href="">
-          <nav>서비스 소개</nav>
         </a>
         <a href="/php/match.php">
           <nav>광고 매칭</nav>
@@ -56,7 +59,7 @@ error_reporting(0);
         <a href="/html/spread.html">
           <nav>광고 뿌리기</nav>
         </a>
-        <a href="/html/pickup.html">
+        <a href="/php/pickup.php">
           <nav>광고 줍기</nav>
         </a>
         <?php
