@@ -20,16 +20,6 @@ if ($uphone == null) {
     $kres = $connect->query($ksql);
     $krow = $kres->fetch();
 }
-
-if (!empty($row)) {
-    echo "{$uname}님의 아이디는 {$row['u_id']}입니다.<br>";
-} else if (!empty($nrow)) {
-    echo "네이버 가입 이용자 입니다.<br>";
-} else if (!empty($krow)) {
-    echo "카카오 가입 이용자 입니다.<br>";
-} else {
-    echo "등록된 사용자가 아닙니다.<br>";
-}
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -37,7 +27,9 @@ if (!empty($row)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>아이디 찾기</title>
+    <link rel="stylesheet" href="/hongber/css/reset.css">
+    <link rel="stylesheet" href="/hongber/css/findid_php.css">
     <script>
         function hclose() {
             opener.document.location.href = "/php/ulogin.php";
@@ -47,7 +39,20 @@ if (!empty($row)) {
 </head>
 
 <body>
-    <button onclick="hclose()">닫기</button>
+    <div id="wrap">
+        <?php
+        if (!empty($row)) {
+            echo "<p>{$uname}님의 아이디는 <br> {$row['u_id']}입니다.</p>";
+        } else if (!empty($nrow)) {
+            echo "<p>네이버 가입 이용자 입니다.</p>";
+        } else if (!empty($krow)) {
+            echo "<p>카카오 가입 이용자 입니다.</p>";
+        } else {
+            echo "<p>등록된 사용자가 아닙니다.</p>";
+        }
+        ?>
+        <button onclick="hclose()">닫기</button>
+    </div>
 </body>
 
 </html>

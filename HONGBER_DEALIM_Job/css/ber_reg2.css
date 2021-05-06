@@ -1,8 +1,10 @@
 @charset "UTF-8";
+
 body {
   margin: 0 auto;
   font-family: '나눔 고딕', NanumGothic, '돋움', Dotum, sans-serif;
 }
+
 a {
   color: #000;
   text-decoration: none;
@@ -10,9 +12,6 @@ a {
 /*----------------상단바 영역-------------*/
 header {
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
   width: 1280px;
   height: 50px;
   background-color: white;
@@ -20,16 +19,16 @@ header {
   border-bottom: 3px solid #999;
   margin: 0 auto;
   font-size: 20px;
-  z-index: 1;
 }
 header > div{
   line-height: 50px;
   padding: 5px 0;
 }
 .logo {
-  margin-top: 5px;
+  margin: 5px auto 0;
   background: #2f3542;
   padding-top: 10px;
+  width: max-content;
   height: 30px;
 }
 .logo span{
@@ -38,38 +37,28 @@ header > div{
   width: 100%;
   color: #fff;
 }
-.nav_p {
-  line-height: 40px;
-  font-size: 16px;
-}
-.nav_p:hover {
-  border-bottom: 2px solid rgba(0,0,0,0.2)
-}
-.nav_a:hover {
-  font-size: 18px;
-  font-weight: bold;
-}
-.logout_nav {
-  display: none;
-  background-color: #fff;
-}
+
 .info_wrap {
   text-align: center;
   margin-top: 50px;
 }
+
 hr{
   width: 370px;
 }
+
 input{
   width: 370px;
   height: 30px;
 }
+
 input:first-child{
   margin-top: 50px;
 }
 
 textarea {
   resize: none;
+  height: 270px;
 }
 
 .submit{
@@ -78,34 +67,22 @@ textarea {
   background-color: rgba(228, 82, 101, 0.733);
   font-size: 30px;
 }
+
 input::placeholder{
   text-align: center;
-}
-
-.log_sns{
-  width: 450px;
-  font-size: 50px;
-  text-align: center;
-  margin: 0 auto;
-}
-
-.log_sns p {
-  display: inline-block;
-}
-
-.top_nav{
-  margin-bottom: 50px;
 }
 /*-----------------------스크롤바--------------------------*/
 body::-webkit-scrollbar {
   width: 10px;
-  }
-  body::-webkit-scrollbar-thumb {
+}
+
+body::-webkit-scrollbar-thumb {
   background-color: #2f3542;
   border-radius: 5px;
-  }
-  body::-webkit-scrollbar-track {
+}
+
+body::-webkit-scrollbar-track {
   background-color: grey;
   border-radius: 5px;
   box-shadow: inset 0px 0px 5px white;
-  }
+}

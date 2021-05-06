@@ -5,7 +5,7 @@ session_start();
 //error_reporting(0);
 
 if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token'])) {
-    echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/index.php'</script>";
+    echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/hongber/index.php'</script>";
 }
 // 내 소개를 변경하는 부분
 $cp_msg = $_POST['cpmsg'];
@@ -61,7 +61,7 @@ if (!isset($_SESSION['hislog'])) {
                     $stmt->bindParam(1, $ti3, PDO::PARAM_LOB);
                     $stmt->execute();
 
-                    echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/php/mypage.php'</script>";
+                    echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/hongber/php/mypage.php'</script>";
                 } else { // 기존에 프로필 사진이 없었다면 or 처음 등록하는 거라면 테이블에 NULL값을 변경해주는 구문
                     $stmt = $dbcon->prepare("UPDATE hser SET h_pimg = ? WHERE h_email = '$email'");
                     $stmt->bindParam(1, $imgfp, PDO::PARAM_LOB);
@@ -84,13 +84,13 @@ if (!isset($_SESSION['hislog'])) {
                     $stmt->bindParam(1, $ti5, PDO::PARAM_LOB);
                     $stmt->execute();
 
-                    echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/php/mypage.php'</script>";
+                    echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/hongber/php/mypage.php'</script>";
                 }
             } else {
-                echo "<script>alert('사진의 크기가 너무 큽니다.'); location.href='/php/pchange.php'</script>";
+                echo "<script>alert('사진의 크기가 너무 큽니다.'); location.href='/hongber/php/pchange.php'</script>";
             }
         } else {
-            echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/php/mypage.php'</script>";
+            echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/hongber/php/mypage.php'</script>";
         }
     }
 }
@@ -137,7 +137,7 @@ if (!isset($_SESSION['uislog'])) {
                     $stmt = $dbcon->prepare("UPDATE user SET u_pimg = ? WHERE u_email = '$email'");
                     $stmt->bindParam(1, $ti, PDO::PARAM_LOB);
                     $stmt->execute();
-                    echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/php/mypage.php'</script>";
+                    echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/hongber/php/mypage.php'</script>";
                 } else {
                     $stmt = $dbcon->prepare("UPDATE user SET u_pimg = ? WHERE u_email = '$email'");
                     $stmt->bindParam(1, $imgfp, PDO::PARAM_LOB);
@@ -151,12 +151,12 @@ if (!isset($_SESSION['uislog'])) {
                     $stmt->bindParam(1, $ti2, PDO::PARAM_LOB);
                     $stmt->execute();
                 }
-                echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/php/mypage.php'</script>";
+                echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/hongber/php/mypage.php'</script>";
             } else {
-                echo "<script>alert('사진의 크기가 너무 큽니다.'); location.href='/php/pchange.php'</script>";
+                echo "<script>alert('사진의 크기가 너무 큽니다.'); location.href='/hongber/php/pchange.php'</script>";
             }
         } else {
-            echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/php/mypage.php'</script>";
+            echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/hongber/php/mypage.php'</script>";
         }
     }
 }
@@ -199,7 +199,7 @@ if (!isset($_SESSION['naver_access_token'])) {
                 $stmt = $dbcon->prepare("UPDATE nuser SET n_pimg = ? WHERE n_email = '$email'");
                 $stmt->bindParam(1, $ti, PDO::PARAM_LOB);
                 $stmt->execute();
-                echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/php/mypage.php'</script>";
+                echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/hongber/php/mypage.php'</script>";
             } else {
                 $stmt = $dbcon->prepare("UPDATE nuser SET n_pimg = ? WHERE n_email = '$email'");
                 $stmt->bindParam(1, $imgfp, PDO::PARAM_LOB);
@@ -213,12 +213,12 @@ if (!isset($_SESSION['naver_access_token'])) {
                 $stmt->bindParam(1, $ti2, PDO::PARAM_LOB);
                 $stmt->execute();
             }
-            echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/php/mypage.php'</script>";
+            echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/hongber/php/mypage.php'</script>";
         } else {
-            echo "<script>alert('사진의 크기가 너무 큽니다.'); location.href='/php/pchange.php'</script>";
+            echo "<script>alert('사진의 크기가 너무 큽니다.'); location.href='/hongber/php/pchange.php'</script>";
         }
     } else {
-        echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/php/mypage.php'</script>";
+        echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/hongber/php/mypage.php'</script>";
     }
 }
 
@@ -260,7 +260,7 @@ if (!isset($_SESSION['kakao_access_token'])) {
                 $stmt = $dbcon->prepare("UPDATE kuser SET k_pimg = ? WHERE k_email = '$email'");
                 $stmt->bindParam(1, $ti, PDO::PARAM_LOB);
                 $stmt->execute();
-                echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/php/mypage.php'</script>";
+                echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/hongber/php/mypage.php'</script>";
             } else {
                 $stmt = $dbcon->prepare("UPDATE kuser SET k_pimg = ? WHERE k_email = '$email'");
                 $stmt->bindParam(1, $imgfp, PDO::PARAM_LOB);
@@ -274,12 +274,12 @@ if (!isset($_SESSION['kakao_access_token'])) {
                 $stmt->bindParam(1, $ti2, PDO::PARAM_LOB);
                 $stmt->execute();
             }
-            echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/php/mypage.php'</script>";
+            echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/hongber/php/mypage.php'</script>";
         } else {
-            echo "<script>alert('사진의 크기가 너무 큽니다.'); location.href='/php/pchange.php'</script>";
+            echo "<script>alert('사진의 크기가 너무 큽니다.'); location.href='/hongber/php/pchange.php'</script>";
         }
     } else {
-        echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/php/mypage.php'</script>";
+        echo "<script>alert('변경사항이 적용되었습니다.'); location.href='/hongber/php/mypage.php'</script>";
     }
 }
 

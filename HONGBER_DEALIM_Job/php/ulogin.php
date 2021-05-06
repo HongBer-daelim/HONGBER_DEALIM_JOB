@@ -9,27 +9,27 @@ error_reporting(0);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log-In</title>
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/hongber/css/reset.css">
+    <link rel="stylesheet" href="/hongber/css/login.css">
     <script>
         function findid() {
-            const width = '700';
-            const height = '700';
+            const width = '300';
+            const height = '300';
 
             const left = Math.ceil((window.screen.width - width) / 2);
             const top = Math.ceil((window.screen.height - height) / 2);
 
-            window.open('/html/ufindid.html', '아이디 찾기', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top + ',' + 'toolbars=no', 'scrollbars=no');
+            window.open('/hongber/html/ufindid.html', '아이디 찾기', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top + ',' + 'toolbars=no', 'scrollbars=no');
         }
 
         function findpwd() {
-            const width = '700';
-            const height = '700';
+            const width = '300';
+            const height = '300';
 
             const left = Math.ceil((window.screen.width - width) / 2);
             const top = Math.ceil((window.screen.height - height) / 2);
 
-            window.open('/html/ufindpwd.html', '비밀번호 찾기', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top + ',' + 'toolbars=no', 'scrollbars=no');
+            window.open('/hongber/html/ufindpwd.html', '비밀번호 찾기', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top + ',' + 'toolbars=no', 'scrollbars=no');
         }
     </script>
 </head>
@@ -39,63 +39,14 @@ error_reporting(0);
         <div id="wrap">
             <!-- 상단 바 -->
             <header class="nav">
-                <a href="/index.php">
+                <a href="/hongber/index.php">
                     <div class="logo">
                         <span>HONGBER</span><br>
                     </div>
                 </a>
-                <div>
-                    <a href="/php/mypage.php" class="nav_a">
-                        <p class="nav_p">MY PAGE</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="/php/match.php" class="nav_a">
-                        <p class="nav_p">광고 매칭</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="/html/spread.html" class="nav_a">
-                        <p class="nav_p">광고 뿌리기</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="/php/pickup.php" class="nav_a">
-                        <p class="nav_p">광고 줍기</p>
-                    </a>
-                </div>
-                <?php
-                //일반 광고주, 홍버, 관리자가 로그인시 로그아웃을 네비게이션바에 표시
-                if (!isset($_SESSION["hislog"]) && !isset($_SESSION["uislog"]) && !isset($_SESSION["mislog"])) {
-                } else {
-                    echo '<div>';
-                    echo '<a href="/php/logout.php" class="nav_a">';
-                    echo '<p class="nav_p">로그아웃</p>';
-                    echo '</a>';
-                    echo '</div>';
-                }
-                //네이버 로그인시 로그아웃을 네비게이션바에 표시
-                if (!isset($_SESSION['naver_access_token'])) {
-                } else {
-                    echo '<div>';
-                    echo '<a href="/php/nlogout.php" class="nav_a">';
-                    echo '<p class="nav_p">로그아웃</p>';
-                    echo '</a>';
-                    echo '</div>';
-                }
-                //카카오 로그인시 로그아웃을 네비게이션바에 표시
-                if (!isset($_SESSION['kakao_access_token'])) {
-                } else {
-                    echo '<div>';
-                    echo '<a href="/php/klogout.php" class="nav_a">';
-                    echo '<p class="nav_p">로그아웃</p>';
-                    echo '</a>';
-                    echo '</div>';
-                }
-                ?>
             </header>
-            <form action="/php/ulog.php" method="POST">
-                <input type="text" name="id" placeholder="아이디" class="id">
+            <form action="/hongber/php/ulog.php" method="POST">
+                <input type="text" name="id" placeholder="아이디" class="id" autocomplete="off">
                 <hr>
                 <input type="password" name="pwd" placeholder="비밀번호" class="password">
                 <hr>
@@ -146,7 +97,7 @@ error_reporting(0);
                     <a href="#" onclick="findpwd()" class="find_password">
                         비밀번호 찾기
                     </a>
-                    <a href="/php/ber_reg.php" class="regist">
+                    <a href="/hongber/php/ber_reg.php" class="regist">
                         회원가입
                     </a>
                 </div>

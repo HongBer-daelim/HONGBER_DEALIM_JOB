@@ -23,7 +23,7 @@ if ($urow != null  || $mrow != null) {
         $_SESSION['uemail'] = $urow['u_email'];
         $uname = $_SESSION['uname'];
 
-        echo "<script>alert('홍버 {$uname}님 어서오세요.'); location.href='/index.php'</script>";
+        echo "<script>alert('홍버 {$uname}님 어서오세요.'); location.href='/hongber/index.php'</script>";
     }
     if ($mrow != null) {
         $_SESSION['mislog'] = true;
@@ -31,7 +31,7 @@ if ($urow != null  || $mrow != null) {
         $_SESSION['mid'] = $mrow['mid'];
         $mname = $_SESSION['mname'];
 
-        echo "<script>alert('관리자 {$mname}님 어서오세요.'); location.href='/index.php'</script>";
+        echo "<script>alert('관리자 {$mname}님 어서오세요.'); location.href='/hongber/index.php'</script>";
     }
 }
 

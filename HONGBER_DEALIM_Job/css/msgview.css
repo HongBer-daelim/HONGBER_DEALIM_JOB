@@ -41,12 +41,12 @@ body {
       height: 25px;
   }
   #write_msg textarea {
-      width: 500px;
-      height: 150px;
+      width: 550px;
+      height: 300px;
   }
   #write_msg #textarea {
       position: relative;
-      height: 158px;
+      height: 320px;
   }
   #write_msg #textarea .col1 {
       position: absolute;

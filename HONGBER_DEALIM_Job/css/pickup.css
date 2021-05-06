@@ -91,7 +91,7 @@ td {
 .plus_btn {
     width: 40px;
     height: 40px;
-    background: url(/css/image/plus.png) no-repeat center center;
+    background: url(/hongber/css/image/plus.png) no-repeat center center;
     background-size: 50%;
     border-left: 0px;
     cursor: pointer;
@@ -101,7 +101,7 @@ td {
     float: left;
     width: 200px;
     height: 200px;
-    background: url(/css/image/arrow.png) no-repeat 0 0;
+    background: url(/hongber/css/image/arrow.png) no-repeat 0 0;
     background-size: cover;
     margin: 150px 50px;
 }
@@ -115,7 +115,7 @@ td {
 .minus_btn {
     width: 40px;
     height: 40px;
-    background: url(/css/image/minus.png) no-repeat center center;
+    background: url(/hongber/css/image/minus.png) no-repeat center center;
     background-size: 50%;
     border-left: 0px;
     cursor: pointer;

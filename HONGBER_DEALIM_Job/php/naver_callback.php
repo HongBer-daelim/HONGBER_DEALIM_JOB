@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 session_start();
-error_reporting(0);
+//error_reporting(0);
 
 if ($_SESSION['naver_state'] != $_GET["state"]) {
 	echo "에러" . $_GET["state"];
@@ -61,7 +61,7 @@ if ($_SESSION['naver_state'] != $_GET["state"]) {
 			$me_status_code = curl_getinfo($me_ch, CURLINFO_HTTP_CODE);
 			curl_close($me_ch);
 
-			echo "<script>alert('필수 정보 제공을 동의해주세요.'); location.href='/php/ber_reg.php'</script>";
+			echo "<script>alert('필수 정보 제공을 동의해주세요.'); location.href='/hongber/php/ber_reg.php'</script>";
 		} else {
 			$id =  $me_responseArr['response']['id'];
 			$name =  $me_responseArr['response']['name'];
@@ -83,7 +83,7 @@ if ($_SESSION['naver_state'] != $_GET["state"]) {
 			$ures = $connect->query($usql);
 			$urow = $ures->fetch();
 
-			$nsql = "SELECT * FROM nuser WHERE n_email = '$email' OR u_phone = '$phone'";
+			$nsql = "SELECT * FROM nuser WHERE n_email = '$email' OR n_phone = '$phone'";
 			$nres = $connect->query($nsql);
 			$nrow = $nres->fetch();
 

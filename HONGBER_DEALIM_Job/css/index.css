@@ -57,12 +57,47 @@ header > div{
   display: none;
   background-color: #fff;
 }
+/*------------------검색창------------------*/
+.search_wrap {
+  position: relative;
+  width: 1280px;
+  line-height: 50px;
+  text-align: right;
+  margin: 0 auto;
+}
+
+.searchbox {
+  display: inline-block;
+  width: 300px;
+  height: 30px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.search_icon {
+  display: inline-block;
+  width: 30px;
+  line-height: 30px;
+  background: url(/hongber/css/image/search.png) center center no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  vertical-align: middle;
+
+}
+
+.search_btn {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  opacity: 0;
+}
 /*----------------슬라이드 영역-------------*/
 .banner {
   position: relative;
   width: 1280px;
   height: 500px !important;
-  padding-top: 50px;
+  /* padding-top: 50px; */
   margin: 0 auto 50px;
 
 }
@@ -71,7 +106,7 @@ header > div{
 }
 .slides li {
   position: absolute;
-  top: 50px;
+  /* top: 50px; */
   left: 0;
   width: 100%;
   height: 500px;
@@ -129,30 +164,38 @@ header > div{
   height: 200px;
 }
 /*---------------------로그인 및 회원가입 영역------------------*/
+.dropdown {
+  position: relative;
+  width: 100px;
+  line-height: 50px;
+  padding: 0;
+  margin-top: 0;
+  text-align: center;
+}
 .dropbtn {
+  width: 100%;
+  height: 90%;
   background-color: white;
   color: #000;
   padding: 0;
   border: none;
   cursor: pointer;
-}
-.dropdown {
-  position: relative;
-  line-height: 50px;
-  padding: 0;
-  margin-top: 0;
+  font-size: 16px;
 }
 .dropdown-content {
   display: none;
   position: absolute;
   top: 50px;
-  right: 0;
+  right: -1px;
   min-width: 180px;
   background-color: #f9f9f9;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 .dropdown-content a {
   border-left: 0;
+}
+.dropdown-content a p {
+  font-size: 14px;
 }
 .dropdown-content a+a>p {
   border-top: 1px solid #bbb;
@@ -167,8 +210,10 @@ header > div{
 .dropdown:hover .dropdown-content {
   display: block;
 }
-.dropdown:hover .dropbtn {
-  background-color: #f1f1f1;
+.dropbtn:hover {
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+  font-size: 16px;
+  font-weight: bold;
 }
 /*-----------------------풋터영역-------------------------*/
 

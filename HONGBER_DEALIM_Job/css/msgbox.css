@@ -14,12 +14,12 @@ ul{
     list-style: none;
 }
 a{
-    display: inline-block;
     text-decoration: none;
     color: #2f3542;
 }
 #msgbox{
-    width: 800px; margin: 0 auto;
+    width: 1050px;
+    margin: 0 auto;
 }
 #msgbox h3{
     margin-top: 30px;
@@ -34,22 +34,39 @@ a{
 #message li:nth-child(1) {
     font-weight: bold;
 }
+#message li input {
+    width: 30px;
+}
 #message span {
     display: inline-block;
     text-align: center;
 }
+#message .col0 {
+    width: 30px;
+    overflow: hidden;
+}
 #message .col1 {
     width: 80px;
+    overflow: hidden;
 }
 #message .col2 {
     width: 270px;
     text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 #message .col3 {
     width: 250px;
+    overflow: hidden;
 }
 #message .col4 {
     width: 150px;
+    overflow: hidden;
+}
+#message .col5 {
+    width: 150px;
+    overflow: hidden;
 }
 #page_num {
     text-align: center;
@@ -69,4 +86,3 @@ a{
     padding: 5px 10px;
     cursor: pointer;
 }
- 

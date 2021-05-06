@@ -4,7 +4,7 @@ session_start();
 //error_reporting(0);
 
 if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token'])) {
-    echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/index.php'</script>";
+    echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/hongber/index.php'</script>";
 }
 if (!isset($_SESSION['hislog'])) {
 } else {
@@ -33,7 +33,7 @@ if (!isset($_SESSION['kakao_access_token'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쪽지</title>
-    <link rel="stylesheet" href="/css/msgview.css">
+    <link rel="stylesheet" href="/hongber/css/msgview.css">
 </head>
 
 <body>
@@ -86,11 +86,19 @@ if (!isset($_SESSION['kakao_access_token'])) {
                             <span class="col2"><textarea name="content" readonly><?php if ($mode == "send") {
                                                                                         $id = $_GET['rv_email'];
                                                                                         $subj = $_GET['subject'];
-                                                                                        $sql = "SELECT * FROM message WHERE rv_id = '$id' AND subject = '$subj'";
+                                                                                        $sql = "SELECT * FROM msgsend WHERE rv_id = '$id' AND subject = '$subj'";
                                                                                     } else {
                                                                                         $id = $_GET['send_email'];
                                                                                         $subj = $_GET['subject'];
-                                                                                        $sql = "SELECT * FROM message WHERE send_id =  '$id' AND subject = '$subj'";
+                                                                                        $sql = "SELECT * FROM msgrv WHERE send_id =  '$id' AND subject = '$subj'";
+
+                                                                                        $cssql = "UPDATE msgsend SET rv_check = 'v' WHERE send_id = '$id' AND subject = '$subj'";
+                                                                                        $csres = $connect->query($cssql);
+                                                                                        $csres->fetch();
+
+                                                                                        $crsql = "UPDATE msgrv SET rv_check = 'v' WHERE send_id = '$id' AND subject = '$subj'";
+                                                                                        $crres = $connect->query($crsql);
+                                                                                        $crres->fetch();
                                                                                     }
                                                                                     $res = $connect->query($sql);
                                                                                     $row = $res->fetch();
@@ -100,7 +108,7 @@ if (!isset($_SESSION['kakao_access_token'])) {
                         if ($mode == "send") {
                         ?>
                         <?php } else { ?>
-                            <input type="button" value="답장하기" onclick="location.href='/php/message.php?rev_email=<?= $id ?>'">
+                            <input type="button" value="답장하기" onclick="location.href='/hongber/php/message.php?rev_email=<?= $id ?>'">
                         <?php } ?>
                     </ul>
                 </div>

@@ -4,7 +4,7 @@ session_start();
 //error_reporting(0);
 
 if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token'])) {
-  echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/index.php'</script>";
+  echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/hongber/index.php'</script>";
 }
 if (!isset($_SESSION['hislog'])) {
 } else {
@@ -74,70 +74,16 @@ if (!isset($_SESSION['kakao_access_token'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Change Profile</title>
-  <link rel="stylesheet" href="/css/reset.css">
-  <link rel="stylesheet" href="/css/pchange.css">
+  <link rel="stylesheet" href="/hongber/css/reset.css">
+  <link rel="stylesheet" href="/hongber/css/pchange.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
 </head>
 
 <body>
   <!-- 상단 바 -->
-  <header class="nav">
-    <div class="logo">
-      <a href="/index.php">
-        <span>HONGBER</span><br>
-      </a>
-    </div>
-    <div>
-      <a href="/php/mypage.php">
-        MY PAGE
-      </a>
-    </div>
-    <div>
-      <a href="/php/match.php">
-        광고 매칭
-      </a>
-    </div>
-    <div>
-      <a href="/html/spread.html">
-        광고 뿌리기
-      </a>
-    </div>
-    <div>
-      <a href="/php/pickup.php">
-        광고 줍기
-      </a>
-    </div>
-    <?php
-    //일반 광고주, 홍버, 관리자가 로그인시 로그아웃을 네비게이션바에 표시
-    if (!isset($_SESSION["hislog"]) && !isset($_SESSION["uislog"]) && !isset($_SESSION["mislog"])) {
-    } else {
-      echo '<div>';
-      echo '<a href="/php/logout.php">';
-      echo '로그아웃';
-      echo '</a>';
-      echo '</div>';
-    }
-    //네이버 로그인시 로그아웃을 네비게이션바에 표시
-    if (!isset($_SESSION['naver_access_token'])) {
-    } else {
-      echo '<div>';
-      echo '<a href="/php/nlogout.php">';
-      echo '로그아웃';
-      echo '</a>';
-      echo '</div>';
-    }
-    //카카오 로그인시 로그아웃을 네비게이션바에 표시
-    if (!isset($_SESSION['kakao_access_token'])) {
-    } else {
-      echo '<div>';
-      echo '<a href="/php/klogout.php">';
-      echo '로그아웃';
-      echo '</a>';
-      echo '</div>';
-    }
-    ?>
-    </div>
-  </header>
+  <?php
+  include "../header.php";
+  ?>
   <section>
     <div class="profile">
       <div class="profile_img">
@@ -152,7 +98,7 @@ if (!isset($_SESSION['kakao_access_token'])) {
                       echo "/css/image/bpimg.png";
                     } ?>" id="cpimg" alt="프로필사진">
         </a>
-        <form enctype="multipart/form-data" action="/php/pc.php" method="POST">
+        <form enctype="multipart/form-data" action="/hongber/php/pc.php" method="POST">
           <input type="file" name="file" id="imgInp" class="edit" accept="image/gif, image/jpeg, image/png">
       </div>
     </div>
@@ -173,12 +119,12 @@ if (!isset($_SESSION['kakao_access_token'])) {
     <div class="change_btn_wrap">
       <input type="submit" value="변경" class="change_btn">
       </form>
-      <input type="button" value="취소" class="cancel_btn" onclick="window.location.replace('/php/mypage.php')">
+      <input type="button" value="취소" class="cancel_btn" onclick="window.location.replace('/hongber/php/mypage.php')">
     </div>
   </section>
-  <script src="/js/jquery.js"></script>
+  <script src="/hongber/js/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
-  <script src="/js/thumbnail.js"></script>
+  <script src="/hongber/js/thumbnail.js"></script>
   <?php
   if (!isset($_SESSION['hislog'])) {
   } else {

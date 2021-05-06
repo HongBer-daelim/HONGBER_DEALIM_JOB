@@ -3,7 +3,7 @@ include "config.php";
 session_start();
 
 if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token'])) {
-    echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/index.php'</script>";
+    echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/hongber/index.php'</script>";
 }
 ?>
 <!DOCTYPE html>
@@ -12,8 +12,8 @@ if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSI
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/del.css">
+    <link rel="stylesheet" href="/hongber/css/reset.css">
+    <link rel="stylesheet" href="/hongber/css/del.css">
 </head>
 
 <body>
@@ -45,7 +45,7 @@ if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSI
         <br><br>
         <table>
             <tr>
-                <a href="/php/match.php">[목록보기] &nbsp</a>
+                <a href="/hongber/php/match.php">[목록보기] &nbsp</a>
                 <a href="" onclick="return confirm('삭제하시겠습니까?');">[삭제] &nbsp</a>
             </tr>
         </table>

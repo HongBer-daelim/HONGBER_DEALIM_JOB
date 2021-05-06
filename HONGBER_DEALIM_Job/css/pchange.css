@@ -28,22 +28,19 @@ header {
   width: 1280px;
   height: 50px;
   background-color: white;
-  z-index: 1;
   border-top: 3px solid #999;
   border-bottom: 3px solid #999;
   margin: 0 auto;
   font-size: 20px;
+  z-index: 1;
 }
 header > div{
-  margin-top: 15px;
-  height: 50px;
-}
-header a{
-  border-left: 1px solid #999;
+  line-height: 50px;
+  padding: 5px 0;
 }
 .logo {
   margin-top: 5px;
-  background: #333;
+  background: #2f3542;
   padding-top: 10px;
   height: 30px;
 }
@@ -51,6 +48,18 @@ header a{
   border-top: 3px solid red;
   border-bottom: 3px solid red;
   width: 100%;
+  color: #fff;
+}
+.nav_p {
+  line-height: 40px;
+  font-size: 16px;
+}
+.nav_p:hover {
+  border-bottom: 2px solid rgba(0,0,0,0.2)
+}
+.nav_a:hover {
+  font-size: 18px;
+  font-weight: bold;
 }
 .logout_nav {
   display: none;

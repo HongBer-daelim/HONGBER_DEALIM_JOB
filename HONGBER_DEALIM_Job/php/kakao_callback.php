@@ -64,7 +64,7 @@ if ($_SESSION['kakao_state'] != $_GET["state"]) {
 			$me_status_code = curl_getinfo($me_ch, CURLINFO_HTTP_CODE);
 			curl_close($me_ch);
 
-			echo "<script>alert('필수 정보 제공을 동의해주세요.(이메일 포함)'); location.href='/php/ber_reg.php'</script>";
+			echo "<script>alert('필수 정보 제공을 동의해주세요.(이메일 포함)'); location.href='/hongber/php/ber_reg.php'</script>";
 		} else {
 			// 카카오는 전화번호를 필수 항목으로 하지 못하여 이름과 이메일을 가져오도록 하기
 			$id =  $me_responseArr['id'];

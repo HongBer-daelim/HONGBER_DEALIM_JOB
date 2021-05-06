@@ -92,7 +92,7 @@ header > div{
   bottom: 0;
   width: 35px;
   height: 35px;
-  background: url(../css/image/wheel.png) center center no-repeat;
+  background: url(/hongber/css/image/wheel.png) center center no-repeat;
   background-size: 80%;
 }
 
@@ -138,7 +138,7 @@ header > div{
   background: pink;
 }
 
-.ing, .finish, .pick {
+.ing, .finish, .pick, .spread {
   width: 50%;
   height: 250px;
   padding: 50px 0;
@@ -147,6 +147,10 @@ header > div{
 }
 
 .pick {
+  background: #bbb;
+}
+
+.spread {
   background: #bbb;
 }
 
@@ -175,6 +179,20 @@ td {
   border: 1px solid black;
   vertical-align: middle;
   text-align: center;
+}
+/*-----------------------쪽지영역--------------------------*/
+.send_li{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 40px;
+  margin-right: 40px;
+  border: none;
+  background-color: #fff;
+}
+.send_li > img{
+  width: 50px;
+  height: 50px;
 }
 /*-----------------------스크롤바--------------------------*/
 body::-webkit-scrollbar {

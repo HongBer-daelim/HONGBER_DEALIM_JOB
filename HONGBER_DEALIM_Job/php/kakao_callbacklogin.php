@@ -66,7 +66,7 @@ if ($status_code == 200) {
 		$_SESSION['kname'] = $name;
 		$_SESSION['kid'] = $id;
 		$_SESSION['kemail'] = $email;
-		echo "<script>alert('{$name}님 어서오세요!'); location.href='/php/../index.php'</script>";
+		echo "<script>alert('{$name}님 어서오세요!'); location.href='../index.php'</script>";
 	} else {
 		session_destroy();
 		echo "<script>alert('등록되지 않은 사용자 입니다.'); location.href='../index.php'</script>";

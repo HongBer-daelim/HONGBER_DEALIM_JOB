@@ -45,9 +45,6 @@ input:first-child{
 /*----------------상단바 영역-------------*/
 header {
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
   width: 1280px;
   height: 50px;
   background-color: white;
@@ -55,16 +52,16 @@ header {
   border-bottom: 3px solid #999;
   margin: 0 auto;
   font-size: 20px;
-  z-index: 1;
 }
 header > div{
   line-height: 50px;
   padding: 5px 0;
 }
 .logo {
-  margin-top: 5px;
+  margin: 5px auto 0;
   background: #2f3542;
   padding-top: 10px;
+  width: max-content;
   height: 30px;
 }
 .logo span{
@@ -73,21 +70,7 @@ header > div{
   width: 100%;
   color: #fff;
 }
-.nav_p {
-  line-height: 40px;
-  font-size: 16px;
-}
-.nav_p:hover {
-  border-bottom: 2px solid rgba(0,0,0,0.2)
-}
-.nav_a:hover {
-  font-size: 18px;
-  font-weight: bold;
-}
-.logout_nav {
-  display: none;
-  background-color: #fff;
-}
+
 
 .info_wrap {
   text-align: center;

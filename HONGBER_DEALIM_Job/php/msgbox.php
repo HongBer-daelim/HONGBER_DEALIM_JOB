@@ -4,7 +4,7 @@ session_start();
 //error_reporting(0);
 
 if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token'])) {
-    echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/index.php'</script>";
+    echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/hongber/index.php'</script>";
 }
 if (!isset($_SESSION['hislog'])) {
 } else {
@@ -33,7 +33,7 @@ if (!isset($_SESSION['kakao_access_token'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쪽지함</title>
-    <link rel="stylesheet" href="/css/msgbox.css">
+    <link rel="stylesheet" href="/hongber/css/msgbox.css">
 </head>
 
 <body>
@@ -53,16 +53,18 @@ if (!isset($_SESSION['kakao_access_token'])) {
                     <ul id="message">
                         <!-- 리스트의 제목줄 -->
                         <li>
+                            <span class="col0"><input type="checkbox" value="selall" onclick="selall(this)"></span>
                             <span class="col1">번호</span>
                             <span class="col2">제목</span>
                             <span class="col3"><?= ($mode == "send") ? "받은이" : "보낸이" ?></span>
                             <span class="col4"><?= ($mode == "send") ? "보낸날" : "받은날" ?></span>
+                            <span class="col5">확인</span>
                         </li>
                         <?php
                         if ($mode == "send") {
-                            $sql = "SELECT * FROM message WHERE send_id='$email' ORDER BY num ASC";
+                            $sql = "SELECT * FROM msgsend WHERE send_id='$email' ORDER BY num DESC";
                         } else {
-                            $sql = "SELECT * FROM message WHERE rv_id='$email' ORDER BY num ASC";
+                            $sql = "SELECT * FROM msgrv WHERE rv_id='$email' ORDER BY num DESC";
                         }
 
                         $res = mysqli_query($conn, $sql);
@@ -87,19 +89,24 @@ if (!isset($_SESSION['kakao_access_token'])) {
                         for ($i = $start; $i < $start + 10 && $i < $rownum; $i++) {
                             mysqli_data_seek($res, $i);
                             $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
+                            $no = $row['num'];
                             $subject = $row['subject'];
                             $msg_id = ($mode == "send") ? $row['rv_id'] : $row['send_id'];
                             $regist_day = $row['regist_day'];
+                            $rv_check = $row['rv_check'];
                         ?>
                             <li>
+                                <form action='/hongber/php/msgdel.php?mode=<?= $mode == 'send' ? 'send' : 'rv' ?>' method="POST">
+                                <span><input type="checkbox" name="del[]" value="<?= $no ?>"></span>
                                 <span class="col1"><?= $num ?></span>
-                                <span class="col2"><a href="/php/msgview.php?mode=<?= $mode ?><?php if ($mode == "send") {
+                                <span class="col2"><a href="/hongber/php/msgview.php?mode=<?= $mode ?><?php if ($mode == "send") {
                                                                                                     echo "&rv_email=";
                                                                                                 } else {
                                                                                                     echo "&send_email=";
-                                                                                                } ?><?= $msg_id = ($mode == "send") ? $row['rv_id'] : $row['send_id'] ?>&subject=<?= $subject ?>&regday=<?= $regist_day ?>"><?= $subject ?></a></span>
+                                                                                                } ?><?= $msg_id = ($mode == "send") ? $row['rv_id'] : $row['send_id'] ?>&subject=<?= $subject ?>&regday=<?= $regist_day ?>&rvc=<?= $rv_check ?>"><?= $subject ?></a></span>
                                 <span class="col3"><?= $msg_id ?></span>
                                 <span class="col4"><?= $regist_day ?></span>
+                                <span class="col5"><?= $row['rv_check'] == "n" ? "읽지 않음" : "읽음" ?></span>
                             </li>
                         <?php
                             $num = $num + 1;
@@ -113,7 +120,7 @@ if (!isset($_SESSION['kakao_access_token'])) {
                         <?php
                         if ($page != 1) {
                             $newPage = $page - 1;
-                            echo "<li><a href='/php/msgbox.php?mode=$mode&page=$newPage'>◀이전 </a></li>";
+                            echo "<li><a href='/hongber/php/msgbox.php?mode=$mode&page=$newPage'>◀이전 </a></li>";
                         } else {
                             echo "<li>◀이전 </li>";
                         }
@@ -121,12 +128,12 @@ if (!isset($_SESSION['kakao_access_token'])) {
                         // 페이지 수만큼 페이지 번호 출력
                         for ($i = 1; $i <= $total_page; $i++) {
                             if ($i == $page) echo "<li><strong> $i </strong></li>";
-                            else echo "<li><a href='/php/msgbox.php?mode=$mode&page=$i'> $i</a><</li>";
+                            else echo "<li><a href='/hongber/php/msgbox.php?mode=$mode&page=$i'> $i</a>></li>";
                         }
 
-                        if ($page == $total_page) {
+                        if ($page != $total_page) {
                             $newPage = $page + 1;
-                            echo "<li><a href='/php/msgbox.php?mode=$mode&page=$newPage'> 다음▶</a></li>";
+                            echo "<li><a href='/hongber/php/msgbox.php?mode=$mode&page=$newPage'> 다음▶</a></li>";
                         } else {
                             echo "<li> 다음▶</li>";
                         }
@@ -136,14 +143,25 @@ if (!isset($_SESSION['kakao_access_token'])) {
 
                     <!-- 쪽지함 이동 버튼들 -->
                     <ul class="buttons">
-                        <li><button onclick="location.href='/php/msgbox.php?mode=rv'">받은 쪽지함</button></li>
-                        <li><button onclick="location.href='/php/msgbox.php?mode=send'">보낸 쪽지함</button></li>
+                        <li><button>삭제</button></li>
+                    </form>
+                        <li><button onclick="location.href='/hongber/php/msgbox.php?mode=rv'">받은 쪽지함</button></li>
+                        <li><button onclick="location.href='/hongber/php/msgbox.php?mode=send'">보낸 쪽지함</button></li>
                     </ul>
                 </div>
 
             </div>
         </div>
     </section>
+    <script>
+        function selall(selectAll) {
+            const chb = document.getElementsByName('del[]');
+
+            chb.forEach((checkbox) => {
+                checkbox.checked = selectAll.checked;
+            })
+        }
+    </script>
 </body>
 
 </html>

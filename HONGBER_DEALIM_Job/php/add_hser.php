@@ -26,7 +26,7 @@ $res4 = $connect->query($sql4);
 $row4 = $res4->fetch();
 
 if (!empty($row) || !empty($row2) || !empty($row3) || !empty($row4)) {
-    echo "<script>alert('회원가입에 실패하였습니다. 다시 시도해주세요.'); location.href='/php/ber_reg2.php'</script>";
+    echo "<script>alert('회원가입에 실패하였습니다. 다시 시도해주세요.'); location.href='/hongber/php/ber_reg2.php'</script>";
 } else {
     $sql = "insert into hser (h_id, h_pwd, h_name, h_phone, h_email, h_msg)";
     $sql = $sql . "values('$h_id','$h_pwd','$h_name','$h_phone', '$h_email', '$h_msg')";

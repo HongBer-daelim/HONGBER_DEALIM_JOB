@@ -8,111 +8,42 @@ session_start();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hongber</title>
-  <link rel="stylesheet" href="/css/reset.css">
-  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/hongber/css/reset.css">
+  <link rel="stylesheet" href="/hongber/css/index.css">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/hongber/favicon.ico" type="image/x-icon">
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
-  <script type="text/javascript" src="/js/index.js"></script>
-  <script type="text/javascript" src="/js/jquery.js"></script>
-  <script type="text/javascript" src="/js/materialize.min.js"></script>
-  <script type="text/javascript" src="/js/slideshow.js"></script>
+  <script type="text/javascript" src="/hongber/js/index.js"></script>
+  <script type="text/javascript" src="/hongber/js/materialize.min.js"></script>
+  <script type="text/javascript" src="/hongber/js/slideshow.js"></script>
 </head>
 
 <body>
   <div id="wrap">
-    <!-- 상단 바 -->
-    <header class="nav">
-      <a href="/index.php">
-        <div class="logo">
-          <span>HONGBER</span><br>
-        </div>
-      </a>
-      <div>
-        <a href="/php/mypage.php" class="nav_a">
-          <p class="nav_p">MY PAGE</p>
-        </a>
+    <?php
+    include "header.php";
+    ?>
+    <!-- 검색창 -->
+    <div class="search_wrap">
+      <form action="/hongber/php/search.php" method="GET">
+      <input type="text" name="search" id="search" class="searchbox" placeholder="회원검색(이름 or 이메일)" autocomplete="off">
+      <div class="search_icon">
+        <input type="submit" value="검색" class="search_btn">
       </div>
-      <div>
-        <a href="/php/match.php" class="nav_a">
-          <p class="nav_p">광고 매칭</p>
-        </a>
-      </div>
-      <div>
-        <a href="/php/spread.php" class="nav_a">
-          <p class="nav_p">광고 뿌리기</p>
-        </a>
-      </div>
-      <div>
-        <a href="/php/pickup.php" class="nav_a">
-          <p class="nav_p">광고 줍기</p>
-        </a>
-      </div>
-      <?php
-      //일반 광고주, 홍버, 관리자가 로그인시 로그아웃을 네비게이션바에 표시
-      if (!isset($_SESSION["hislog"]) && !isset($_SESSION["uislog"]) && !isset($_SESSION["mislog"])) {
-      } else {
-        echo '<div>';
-        echo '<a href="/php/logout.php" class="nav_a">';
-        echo '<p class="nav_p">로그아웃</p>';
-        echo '</a>';
-        echo '</div>';
-      }
-      //네이버 로그인시 로그아웃을 네비게이션바에 표시
-      if (!isset($_SESSION['naver_access_token'])) {
-      } else {
-        echo '<div>';
-        echo '<a href="/php/nlogout.php" class="nav_a">';
-        echo '<p class="nav_p">로그아웃</p>';
-        echo '</a>';
-        echo '</div>';
-      }
-      //카카오 로그인시 로그아웃을 네비게이션바에 표시
-      if (!isset($_SESSION['kakao_access_token'])) {
-      } else {
-        echo '<div>';
-        echo '<a href="/php/klogout.php" class="nav_a">';
-        echo '<p class="nav_p">로그아웃</p>';
-        echo '</a>';
-        echo '</div>';
-      }
-      ?>
-      <?php
-      if (!isset($_SESSION["hislog"]) && !isset($_SESSION["uislog"]) && !isset($_SESSION["mislog"]) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token'])) {
-      ?>
-        <div class="dropdown">
-          <button class="dropbtn">login</button>
-          <div class="dropdown-content">
-            <a href="/html/hlogin.html">
-              <p>광고주로그인</p>
-            </a>
-            <a href="/php/ulogin.php">
-              <p>홍버로그인</p>
-            </a>
-            <a href="/php/ber_reg2.php">
-              <p>광고주회원가입</p>
-            </a>
-            <a href="/php/ber_reg.php">
-              <p>홍버회원가입</p>
-            </a>
-          </div>
-        </div>
-      <?php
-      }
-      ?>
-    </header>
+      </form>
+    </div>
     <!-- 슬라이드 쇼 -->
     <div class="banner">
       <ul class="slides">
         <!-- 슬라이드 쇼 이미지 크기 높이 500px -->
         <li>
-          <img src="/css/image/banner1.png" alt="" class="img1">
+          <img src="/hongber/css/image/banner1.png" alt="" class="img1">
         </li>
         <li>
-          <img src="/css/image/banner2.png" alt="" class="img2">
+          <img src="/hongber/css/image/banner2.png" alt="" class="img2">
         </li>
         <li>
-          <img src="/css/image/banner3.png" alt="" class="img3">
+          <img src="/hongber/css/image/banner3.png" alt="" class="img3">
         </li>
       </ul>
     </div>

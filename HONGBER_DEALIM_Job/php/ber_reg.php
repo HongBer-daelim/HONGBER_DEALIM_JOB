@@ -8,9 +8,9 @@ error_reporting(0);
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<link rel="stylesheet" href="/css/reset.css">
-	<link rel="stylesheet" href="/css/ber_reg.css">
+	<title>회원가입</title>
+	<link rel="stylesheet" href="/hongber/css/reset.css">
+	<link rel="stylesheet" href="/hongber/css/ber_reg.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js">
 	</script>
 	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8">
@@ -49,63 +49,14 @@ error_reporting(0);
 <body>
 	<!-- 상단 바 -->
 	<header class="nav">
-		<a href="/index.php">
+		<a href="/hongber/index.php">
 			<div class="logo">
-				<span>HONGBER</span><br>
+				<span>HONGBER</span>
 			</div>
 		</a>
-		<div>
-			<a href="/php/mypage.php" class="nav_a">
-				<p class="nav_p">MY PAGE</p>
-			</a>
-		</div>
-		<div>
-			<a href="/php/match.php" class="nav_a">
-				<p class="nav_p">광고 매칭</p>
-			</a>
-		</div>
-		<div>
-			<a href="/php/spread.php" class="nav_a">
-				<p class="nav_p">광고 뿌리기</p>
-			</a>
-		</div>
-		<div>
-			<a href="/php/pickup.php" class="nav_a">
-				<p class="nav_p">광고 줍기</p>
-			</a>
-		</div>
-		<?php
-		//일반 광고주, 홍버, 관리자가 로그인시 로그아웃을 네비게이션바에 표시
-		if (!isset($_SESSION["hislog"]) && !isset($_SESSION["uislog"]) && !isset($_SESSION["mislog"])) {
-		} else {
-			echo '<div>';
-			echo '<a href="/php/logout.php" class="nav_a">';
-			echo '<p class="nav_p">로그아웃</p>';
-			echo '</a>';
-			echo '</div>';
-		}
-		//네이버 로그인시 로그아웃을 네비게이션바에 표시
-		if (!isset($_SESSION['naver_access_token'])) {
-		} else {
-			echo '<div>';
-			echo '<a href="/php/nlogout.php" class="nav_a">';
-			echo '<p class="nav_p">로그아웃</p>';
-			echo '</a>';
-			echo '</div>';
-		}
-		//카카오 로그인시 로그아웃을 네비게이션바에 표시
-		if (!isset($_SESSION['kakao_access_token'])) {
-		} else {
-			echo '<div>';
-			echo '<a href="/php/klogout.php" class="nav_a">';
-			echo '<p class="nav_p">로그아웃</p>';
-			echo '</a>';
-			echo '</div>';
-		}
-		?>
 	</header>
 	<div class="info_wrap">
-		<form action="/php/add_user.php" method="POST">
+		<form action="/hongber/php/add_user.php" method="POST">
 			<input type="id" name="id" placeholder="아이디" required><br>
 			<hr>
 			<input type="password" name="pwd" id="pwd" placeholder="비밀번호" required><br>
