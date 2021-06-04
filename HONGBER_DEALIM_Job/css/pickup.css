@@ -1,147 +1,324 @@
-@charset "UTF-8";
-body {
+#wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     margin: 0 auto;
-    font-family: '나눔 고딕', NanumGothic, '돋움', Dotum, sans-serif;
 }
-
 a {
     color: #000;
     text-decoration: none;
 }
-
+body{
+    font-family: serif;
+    -ms-overflow-style: none; 
+    background: rgba(0, 0, 0, 0.9);
+}
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+/*----------------상단바 영역-------------*/
 header {
     position: relative;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     width: 1280px;
-    height: 50px;
-    background-color: white;
-    border-top: 3px solid #999;
-    border-bottom: 3px solid #999;
+    height: 100px;
+    background-color: #000;
     margin: 0 auto;
     font-size: 20px;
     z-index: 1;
 }
- header > div{
-    line-height: 50px;
+header > div {
     padding: 5px 0;
 }
 .logo {
-    margin-top: 5px;
-    background: #2f3542;
-    padding-top: 10px;
-    height: 30px;
+    width: 250px;
+    height: 100px;
+    background: url(/hongber/css/image/logo.png) center center no-repeat;
+    background-size: contain;
 }
-.logo span{
-    border-top: 3px solid red;
-    border-bottom: 3px solid red;
-    width: 100%;
-    color: #fff;
+.navbar_wrap {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 1030px;
+    height: 40px;
+    border-bottom: 3px solid #6a5f60;
+    margin-top: 10px;
+}
+.navbar_wrap>div:last-child {
+    margin-right: 20px;
 }
 .nav_p {
-    line-height: 40px;
+    line-height: 30px;
+    color: #705d59;
     font-size: 16px;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+    margin-top: 13px;
 }
 .nav_p:hover {
-    border-bottom: 2px solid rgba(0,0,0,0.2)
-}
-.nav_a:hover {
-    font-size: 18px;
-    font-weight: bold;
+    background-color: #705d59;
+    color: #000;
 }
 .logout_nav {
     display: none;
     background-color: #fff;
 }
-
-.table_wrap {
-    width: 1100px;
-    padding-top: 150px;
-    margin: 0 auto;
+/*------------------검색창------------------*/
+.search_wrap {
+    position: relative;
+    line-height: 40px;
+    text-align: right;
 }
-
-.ad_list, .pick_list {
-    float: left;
-    width: 400px;
-    height: 500px;
-    border: 1px solid black;
-    padding: 20px 0;
+  
+.searchbox {
+    display: inline-block;
+    width: 200px;
+    height: 30px;
     box-sizing: border-box;
-    overflow: auto;
+    vertical-align: middle;
+    background-color: #524745;
+    border: none;
+    border-radius: 20px;
 }
-
-.ad_list p, .pick_list p {
-    text-align: center;
-    margin-bottom: 20px;
+  
+.searchbox::placeholder {
+    padding-left: 10px;
+    color: #fff;
 }
-
-table {
-    margin: 0 auto;
-    border-collapse: separate;
-    border-spacing: 0 25px;
-}
-
-td {
-    width: 300px;
-    border: 1px solid black;
+  
+.search_icon {
+    display: inline-block;
+    width: 30px;
+    line-height: 30px;
+    margin-left: 3px;
+    background: url(/hongber/css/image/search.png) center center no-repeat;
+    background-size: 80%;
     vertical-align: middle;
 }
-
-.plus_btn {
-    width: 40px;
-    height: 40px;
-    background: url(/hongber/css/image/plus.png) no-repeat center center;
-    background-size: 50%;
-    border-left: 0px;
+  
+.search_btn {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    box-sizing: border-box;
+    opacity: 0;
     cursor: pointer;
 }
-
-.arrow {
-    float: left;
-    width: 200px;
+  
+/*-----------------------flex container--------------------------*/
+.pick_wrap{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 900px;
+    box-shadow: 16px 20px 26px 10px rgba(0,0,0,0.5);
+}
+.hm_thumb{
+    position: absolute;
+    margin: 20px 0 0 20px;
+    width: 150px;
+    height: 150px;
+    z-index: 3;
+    border-radius: 50%;
+     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+}
+.hm_thumb > img{
+    border-radius: 50%;
+    width: 100% !important;
+    height: 100% !important;
+}
+.info{
+    position: relative;
+    display: flex;
+    width: 100%;
     height: 200px;
-    background: url(/hongber/css/image/arrow.png) no-repeat 0 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url(/hongber/css/image/content_background.jpg) center 30% no-repeat;
     background-size: cover;
-    margin: 150px 50px;
 }
-
-.pick_list::after {
-    clear: both;
-    display: block;
+.info::after {
     content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
 }
-
-.minus_btn {
-    width: 40px;
+.info p {
+    font-family: '나눔 고딕', NanumGothic;
+    z-index: 1;
+}
+.name_section{
+    width: 50%;
+    text-align: left;
+    color: #fff;
+    font-size: 2rem;
+    margin: 5px 0;
+}
+.Email_section{
+    width: 50%;
+    text-align: left;
+    color: #cc9583;
+    font-size: 1.5rem;
+    margin: 10px 0 5px 0;
+}
+.day{
+    width: 50%;
+    text-align: left;
+    color: #cc9583;
+    font-size: 1.5rem;
+    margin: 10px 0 5px 0;
+}
+.per {
+    width: 50%;
+    text-align: left;
+    color: #cc9583;
+    font-size: 1.5rem;
+    margin: 10px 0 5px 0;
+}
+.img_slide{
+    width: 45%;
+    height: 200px;
+    border: 1px solid red;
+}
+.add_warp {
+    width: 100%;
+    background-color: rgba(204, 149, 131, 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.add_warp img {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 30px;
+    border: 2px solid #524745;
+    padding: 10px;
+}
+.add_intro {
+    height: fit-content;
+    margin: 10px 0 10px 0;
+}
+.prod_intro {
+    height: fit-content;
+    margin: 10px 0 10px 0;
+}
+.i_intro {
+    width: 100%;
+    margin: 10px 0 10px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+.intro_t {
+    width: 500px;
+    height: fit-content;
+    margin: 10px 0 10px 0;
+    text-align: center;
+}
+.accept {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: fit-content;
     height: 40px;
-    background: url(/hongber/css/image/minus.png) no-repeat center center;
-    background-size: 50%;
-    border-left: 0px;
-    cursor: pointer;
+    padding: 0 10px;
+    color: #fff;
+    font-size: 1rem;
+    /* font-weight: bold; */
+    background: #312421;
+    border: none;
+    border-radius: 10px;
+    z-index: 1;
 }
+.add_tool {
+    margin: 10px 0 10px 0;
+}
+.homebtn {
+    z-index: 1;
+    bottom: 90px !important;
+}
+.modi {
+    width: 50%;
+    text-align: left;
+    margin: 5px 0 5px 0;
+    z-index: 1;
+}
+.modify {
+    width: 40%;
+    border: none;
+    border-radius: 20px;
+    color: #cc9583;
+    font-size: 1rem;
+}
+/*-----------------------swiper--------------------------*/
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    background: none
+}
+.swiper-container1{
+    width: 100%;
+    height: auto;
+    background: url(/hongber/css/image/banner.jpg) center center no-repeat;
+    background-size: cover;
+}
+.swiper-button-next{
+    color: wheat !important;
+    position: fixed !important;
+}
+.swiper-button-prev{
+    color: wheat !important;
+    position: fixed !important;
+}
+.swiper-pagination-bullet {
+    background-color: #000 !important;
+  }
 /*-----------------------스크롤바--------------------------*/
 .ad_list::-webkit-scrollbar {
     width: 10px;
-    }
-    .ad_list::-webkit-scrollbar-thumb {
+}
+.ad_list::-webkit-scrollbar-thumb {
     background-color: #2f3542;
     border-radius: 5px;
-    }
-    .ad_list::-webkit-scrollbar-track {
+}
+.ad_list::-webkit-scrollbar-track {
     background-color: grey;
     border-radius: 5px;
     box-shadow: inset 0px 0px 5px white;
-    }
-    .pick_list::-webkit-scrollbar {
+}
+.pick_list::-webkit-scrollbar {
     width: 10px;
-    }
-    .pick_list::-webkit-scrollbar-thumb {
+}
+.pick_list::-webkit-scrollbar-thumb {
     background-color: #2f3542;
     border-radius: 5px;
-    }
-    .pick_list::-webkit-scrollbar-track {
+}
+.pick_list::-webkit-scrollbar-track {
     background-color: grey;
     border-radius: 5px;
     box-shadow: inset 0px 0px 5px white;
-    }
+}

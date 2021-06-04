@@ -1,14 +1,14 @@
 <?php
 include "config.php";
 session_start();
-//error_reporting(0);
 
 $mode = $_GET['mode'];
 $num = $_POST['del'];
 
-if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token'])) {
+if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token']) && !isset($_SESSION["mislog"])) {
     echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/hongber/index.php'</script>";
 }
+
 if (!isset($_SESSION['hislog'])) {
 } else {
     $email = $_SESSION['hemail'];

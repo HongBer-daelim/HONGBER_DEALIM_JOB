@@ -1,11 +1,11 @@
 <?php
 include "config3.php";
 session_start();
-//error_reporting(0);
 
-if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token'])) {
+if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token']) && !isset($_SESSION["mislog"])) {
     echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/hongber/index.php'</script>";
 }
+
 if (!isset($_SESSION['hislog'])) {
 } else {
     $email = $_SESSION['hemail'];
@@ -71,7 +71,6 @@ if (!isset($_SESSION['kakao_access_token'])) {
                         //전체 쪽지 수
                         $rownum = mysqli_num_rows($res);
 
-                        // 한페이지안에 모든 쪽지를 리스트로 보여주면 너무 길어서.. 최대 한페이지에 10개까지만 보여지게 하고
                         // 리스트의 하단에 페이지네이션을 표시해서 선택할 수 있도록
                         if (isset($_GET['page'])) $page = $_GET['page'];
                         else  $page = 1;
@@ -95,18 +94,22 @@ if (!isset($_SESSION['kakao_access_token'])) {
                             $regist_day = $row['regist_day'];
                             $rv_check = $row['rv_check'];
                         ?>
-                            <li>
+                            <li class="messagelist">
                                 <form action='/hongber/php/msgdel.php?mode=<?= $mode == 'send' ? 'send' : 'rv' ?>' method="POST">
-                                <span><input type="checkbox" name="del[]" value="<?= $no ?>"></span>
-                                <span class="col1"><?= $num ?></span>
-                                <span class="col2"><a href="/hongber/php/msgview.php?mode=<?= $mode ?><?php if ($mode == "send") {
-                                                                                                    echo "&rv_email=";
-                                                                                                } else {
-                                                                                                    echo "&send_email=";
-                                                                                                } ?><?= $msg_id = ($mode == "send") ? $row['rv_id'] : $row['send_id'] ?>&subject=<?= $subject ?>&regday=<?= $regist_day ?>&rvc=<?= $rv_check ?>"><?= $subject ?></a></span>
-                                <span class="col3"><?= $msg_id ?></span>
-                                <span class="col4"><?= $regist_day ?></span>
-                                <span class="col5"><?= $row['rv_check'] == "n" ? "읽지 않음" : "읽음" ?></span>
+                                    <span><input type="checkbox" name="del[]" value="<?= $no ?>"></span>
+                                    <span class="col1"><?= $num ?></span>
+                                    <span class="col2"><a onclick="ref()" href="/hongber/php/msgview.php?mode=<?= $mode ?><?php if ($mode == "send") {
+                                                                                                                echo "&rv_email=";
+                                                                                                            } else {
+                                                                                                                echo "&send_email=";
+                                                                                                            } ?><?= $msg_id = ($mode == "send") ? $row['rv_id'] : $row['send_id'] ?>&subject=<?= $subject ?>&regday=<?= $regist_day ?>&rvc=<?= $rv_check ?>"><?= $subject ?></a></span>
+                                    <span class="col3"><a onclick="ref()" href="/hongber/php/msgview.php?mode=<?= $mode ?><?php if ($mode == "send") {
+                                                                                                                echo "&rv_email=";
+                                                                                                            } else {
+                                                                                                                echo "&send_email=";
+                                                                                                            } ?><?= $msg_id = ($mode == "send") ? $row['rv_id'] : $row['send_id'] ?>&subject=<?= $subject ?>&regday=<?= $regist_day ?>&rvc=<?= $rv_check ?>"><?= $msg_id ?></a></span>
+                                    <span class="col4"><?= $regist_day ?></span>
+                                    <span class="col5"><?= $row['rv_check'] == "n" ? "읽지 않음" : "읽음" ?></span>
                             </li>
                         <?php
                             $num = $num + 1;
@@ -144,7 +147,7 @@ if (!isset($_SESSION['kakao_access_token'])) {
                     <!-- 쪽지함 이동 버튼들 -->
                     <ul class="buttons">
                         <li><button>삭제</button></li>
-                    </form>
+                        </form>
                         <li><button onclick="location.href='/hongber/php/msgbox.php?mode=rv'">받은 쪽지함</button></li>
                         <li><button onclick="location.href='/hongber/php/msgbox.php?mode=send'">보낸 쪽지함</button></li>
                     </ul>
@@ -160,6 +163,20 @@ if (!isset($_SESSION['kakao_access_token'])) {
             chb.forEach((checkbox) => {
                 checkbox.checked = selectAll.checked;
             })
+        }
+    </script>
+    <script>
+        function del() {
+            const chb = document.getElementsByName('del[]');
+
+            chb.forEach((checkbox) => {
+                checkbox.checked = selectAll.checked;
+            })
+        }
+    </script>
+    <script>
+        function ref() {
+            opener.location.reload();
         }
     </script>
 </body>

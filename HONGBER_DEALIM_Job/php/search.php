@@ -1,7 +1,10 @@
 <?php
 include "config.php";
 session_start();
-//error_reporting(0);
+
+if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token']) && !isset($_SESSION["mislog"])) {
+    echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/hongber/index.php'</script>";
+}
 
 $search = $_GET['search'];
 
@@ -26,23 +29,15 @@ $chc = $rrow == false ? "none" : "isis";
     <title>회원 찾기</title>
     <link rel="stylesheet" href="/hongber/css/reset.css">
     <link rel="stylesheet" href="/hongber/css/search.css">
+    <link rel="icon" href="/hongber/favicon.ico" type="image/x-icon">
     <script src="/hongber/js/jquery.js"></script>
 </head>
 
 <body>
+    <?php
+    include "../header.php";
+    ?>
     <div id="wrap">
-        <?php
-        include "../header.php";
-        ?>
-        <!-- 검색창 -->
-        <div class="search_wrap">
-            <form action="/hongber/php/search.php" method="GET">
-                <input type="text" name="search" id="search" class="searchbox" placeholder="회원검색(이름 or 이메일)" autocomplete="off">
-                <div class="search_icon">
-                    <input type="submit" value="검색" class="search_btn">
-                </div>
-            </form>
-        </div>
         <nav class="nav2">
             <p>검색어 <?= $search ?>에 대한 결과 입니다.</p>
         </nav>
@@ -54,7 +49,7 @@ $chc = $rrow == false ? "none" : "isis";
                 $msg = $row['msg'];
                 $pimg = $row['pimg'];
                 if (empty($pimg)) {
-                    $pimg = "/css/image/bpimg.png";
+                    $pimg = "/hongber/css/image/bpimg.png";
                 }
 
                 $usql = "SELECT * FROM user WHERE u_name = '$name' AND u_email = '$email'";
@@ -99,23 +94,29 @@ $chc = $rrow == false ? "none" : "isis";
                 </section>
         <?php }
         } else if ($search == '""') {
+            echo "<section>";
             echo "<p class='none_here'>똑똑똑...?</p>";
+            echo "</section>";
         }
         if ($chc == "none") {
+            echo "<section>";
             echo "<p class='none_here'>똑똑똑...?</p>";
+            echo "</section>";
         } ?>
     </div>
     <script>
         function knock(email) {
             const width = '1250';
-            const height = '900';
+            const height = '1000';
 
             const left = Math.ceil((window.screen.width - width) / 2);
             const top = Math.ceil((window.screen.height - height) / 2);
-            const who = $('.input_who').val();
-            window.open('/hongber/php/knock.php?name=<?= $name ?>&email=' + email + '&msg=<?= $msg ?>', 'knock', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top + ',' + 'toolbars=no', 'scrollbars=no');
+            window.open('/hongber/php/knock.php?name=<?= $name ?>&email=' + email + '&msg=<?= $msg ?>', 'knock', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top + ', scrollbars=no');
         }
     </script>
+    <?php
+    include "home.php";
+    ?>
 </body>
 
 </html>

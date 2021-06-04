@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+.blind {
+    position: absolute;
+    overflow: hidden;
+    margin: -1px;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    border: none;
+    clip: rect(0, 0, 0, 0);
+}
+  
+.startRadio {
+    position: absolute;
+    top: 26px;
+    right: 10px;
+    display: inline-block;
+    overflow: hidden;
+    height: 30px;
+}
+
+.startRadio:after {
+    content: "";
+    display: block;
+    position: relative;
+    z-index: 10;
+    height: 30px;
+    background: url(/hongber/css/image/starrating.png) repeat-x 0 0;
+    background-size: contain;
+    pointer-events: none;
+}
+
+.startRadio__box {
+    position: relative;
+    z-index: 1;
+    float: left;
+    width: 15px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.startRadio__box input {
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    position: absolute !important;
+}
+
+input:checked + .startRadio__img {
+    background-color: #000;
+}
+
+.startRadio__img {
+    display: block;
+    position: absolute;
+    right: 0;
+    width: 500px;
+    height: 30px;
+    pointer-events: none;
+}

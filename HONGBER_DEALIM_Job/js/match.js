@@ -1,12 +1,14 @@
-/*-------------상단바 스크롤 시-------------*/
-$(document).ready(function () {
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 10) {
-            $('.header').fadeOut();
-        }
-        else {
-            $('.header').fadeIn();
-        }
+jQuery(function ($) {
+    $(".btn_box").hover(function () {
+        $(".drop_btn").stop().slideToggle("500");
+        $(".drop_btn1").stop().slideToggle("500");
+    });
+
+    $(".hot_card").hover(function () {
+        $(this).children(".hot_img").toggle(500);
+    });
+
+    $(".honor_card").hover(function () {
+        $(this).children(".hm_img").toggle(500);
     });
 });
-var currentPosition = parseInt($("#sidebox").css("top")); $(window).scroll(function () { var position = $(window).scrollTop(); $("#sidebox").stop().animate({ "top": position + currentPosition + "px" }, 100); });

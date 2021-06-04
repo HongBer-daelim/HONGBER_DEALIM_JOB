@@ -1,6 +1,5 @@
 <?php
 include "config.php";
-//error_reporting(0);
 
 $uname = $_POST["name"];
 $uemail = $_POST["email"];
@@ -32,7 +31,7 @@ if ($uphone == null) {
     <link rel="stylesheet" href="/hongber/css/findid_php.css">
     <script>
         function hclose() {
-            opener.document.location.href = "/php/ulogin.php";
+            opener.document.location.href = "/hongber//php/ulogin.php";
             self.close();
         }
     </script>

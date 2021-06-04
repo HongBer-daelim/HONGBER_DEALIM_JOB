@@ -1,9 +1,8 @@
 <?php
 include "config.php";
 session_start();
-error_reporting(0);
 
-if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token'])) {
+if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token']) && !isset($_SESSION["mislog"])) {
   echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/hongber/index.php'</script>";
 }
 ?>
@@ -15,8 +14,9 @@ if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSI
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/hongber/css/reset.css">
   <link rel="stylesheet" href="/hongber/css/user_info.css">
-  <script type="text/javascript" src="/hongber/js/user_info.js"></script>
+  <link rel="icon" href="/hongber/favicon.ico" type="image/x-icon">
   <script type="text/javascript" src="/hongber/js/jquery.js"></script>
+  <script type="text/javascript" src="/hongber/js/user_info.js"></script>
   <script>
     function tnn() {
       document.getElementById('tn').value = document.getElementById('tr').value.length;
@@ -30,8 +30,8 @@ if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSI
   <?php
   include "../header.php";
   ?>
-  <form enctype="multipart/form-data" action="/hongber/php/himdb.php" method="POST">
-    <div class="form_wrap">
+  <div class="form_wrap">
+    <form enctype="multipart/form-data" action="/hongber/php/himdb.php" method="POST">
       <p>이름</p>
       <input type="text" id="inpname" name="name" placeholder="ex)홍길동(이름)" required readonly><br>
       <p>홍보할 제품 사진 업로드</p>
@@ -45,12 +45,22 @@ if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSI
         <textarea name="resolution" placeholder="ex(각오한마디) 최대 300자" id="tr" onkeyup="tnn()" onkeydwon="tnn()" onkeypress="tnn()" maxlength="300" required></textarea>
       </div>
       <input type="number" id="tn" value="0" readonly><br>
+      <p>Category</p>
+      <select class="category" name="category" id="category">
+        <option value="SNS">SNS</option>
+        <option value="YouTube">YouTube</option>
+        <option value="WEB">WEB</option>
+        <option value="APP">APP</option>
+        <option value="entertainment">entertainment</option>
+        <option value="music">music</option>
+        <option value="video">video</option>
+      </select>
       <p>등록기간</p>
       <input type="date" name="start_d" id="s_d"><input type="date" name="end_d" id="e_d" required><br>
       <div>
         <input type="submit" value="등록" id="submit">
       </div>
-    </div>
+  </div>
   </form>
   <?php
   if (!isset($_SESSION['hislog'])) {

@@ -1,7 +1,6 @@
 <?php
 include "config.php";
 session_start();
-error_reporting(0);
 
 $u_id = $_POST["id"];
 $u_pwd = $_POST["pwd"];
@@ -10,7 +9,7 @@ $usql = "SELECT * FROM user WHERE u_id = '$u_id' AND u_pwd = '$u_pwd'";
 $ures = $connect->query($usql);
 $urow = $ures->fetch();
 
-$msql = "SELECT * FROM hbmaster WHERE mid = '$h_id' AND mpwd = '$h_pwd'";
+$msql = "SELECT * FROM hbmaster WHERE mid = '$u_id' AND mpwd = '$u_pwd'";
 $mres = $connect->query($msql);
 $mrow = $mres->fetch();
 

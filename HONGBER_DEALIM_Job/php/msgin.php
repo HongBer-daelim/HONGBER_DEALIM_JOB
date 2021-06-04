@@ -1,15 +1,16 @@
 <?php
 include "config.php";
 session_start();
-//error_reporting(0);
 
-if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token'])) {
+if (!isset($_SESSION['hislog']) && !isset($_SESSION['uislog']) && !isset($_SESSION['naver_access_token']) && !isset($_SESSION['kakao_access_token']) && !isset($_SESSION["mislog"])) {
     echo "<script>alert('로그인후 이용하실 수 있습니다.'); location.href='/hongber/index.php'</script>";
 }
+
 $send_id = $_GET['send_id']; //송신자 이메일
 $rv_id = $_POST['rv_id']; //수신자 이메일
 $subject = $_POST['subject']; // 제목
 $content = $_POST['content']; // 내용
+date_default_timezone_set('Asia/Seoul');
 $regist_day = date("Y-m-d H:i"); // 쪽지 보낸 시간
 
 // 수신이메일이 존재하는지
@@ -42,4 +43,3 @@ if ($row) {
 }
 
 $connect = null;
-?>
